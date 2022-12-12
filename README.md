@@ -1,3 +1,9 @@
+# Dashboard
+
+### El dashboard es el sistema que los empleados del Hotel Miranda necesitan para administrar el sitio web: habitaciones, ofertas, reservas, etc.
+
+### [Hotel Miranda](https://github.com/TheLordRalph/Hotel-Miranda)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
