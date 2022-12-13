@@ -16,3 +16,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.active {
+  padding: 0 !important;
+}
+
+.active h2, .active svg {
+  color: #E23428 !important;
+  font-weight: 600;
+}
+
+.active div {
+  color: #E23428;
+  display: block !important;
+  width: 8px;
+  background-color: currentcolor;
+  height: 100%;
+  border-radius: 0 6px 6px 0;
+}
