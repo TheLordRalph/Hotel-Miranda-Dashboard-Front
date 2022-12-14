@@ -54,7 +54,7 @@ export const Login = () => {
     if (email === process.env.REACT_APP_EMAIL_DASHBOARD && password === process.env.REACT_APP_PASSWORD_DASHBOARD) {
       event.currentTarget[1].setAttribute("style", 'color: #799283; border-color: #799283;');
       localStorage.setItem("login", true);
-      navigate("/");
+      navigate("/dashboard");
     } else {
       event.currentTarget[1].setAttribute("style", 'color: red; border-color: red;');
     }
@@ -64,7 +64,7 @@ export const Login = () => {
     <section style={{ height: '100%', display: 'flex', }}>
       <div style={{ backgroundColor: 'white', width: '50%', display: 'flex', borderRadius: '12px', margin: 'auto', boxShadow: '0px 16px 30px rgba(0, 0, 0, 0.14)', }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', width: '50%', padding: '41px 49px', justifyContent: 'space-between', }}>
-            <Title>Login</Title>
+            <Title margin='0 0 21px 0'>Login</Title>
             <form onSubmit={handleSubmit}>
               <Input placeholder="Email" name="email" size="2em" />
               <PasswordInput placeholder="Password" name="pass" size="2em" />

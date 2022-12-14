@@ -39,6 +39,10 @@ code {
   left: -18% !important;
 }
 
+.mainAni {
+  padding-left: 0 !important;
+}
+
 .navBarAni {
   padding-left: 0 !important;
 }
