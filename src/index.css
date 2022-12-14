@@ -34,3 +34,15 @@ code {
   height: 100%;
   border-radius: 0 6px 6px 0;
 }
+
+.sideBarAni {
+  left: -18% !important;
+}
+
+.navBarAni {
+  padding-left: 0 !important;
+}
+
+.openSideAni {
+  transform: rotateZ(180deg) !important;
+}
