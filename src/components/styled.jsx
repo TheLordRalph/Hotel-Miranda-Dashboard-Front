@@ -5,7 +5,7 @@ export const Title = styled.h1`
   font-size: ${props => props.size ? props.size : '28px'};
   line-height: ${props => props.lineHeight ? props.lineHeight : '42px'};
   color: ${props => props.color ? props.color : '#262626'};
-  width: 100%;
+  width: ${props => props.width ? props.width : '100%'};
   margin: ${props => props.margin ? props.margin : '0'};
   align-self: center;
 `;
@@ -30,4 +30,10 @@ export const Button = styled.button`
   background: ${props => props.background ? props.background : "white"};
   color: ${props => props.color ? props.color : "#135846"};
   border-color: ${props => props.borderColor ? props.borderColor : "#135846"};
+`;
+
+export const UserPhoto = styled.img`
+  width: ${props => props.width ? props.width : '80px'}; 
+  border-radius: 8px; 
+  margin: ${props => props.margin ? props.margin : '0'};
 `;

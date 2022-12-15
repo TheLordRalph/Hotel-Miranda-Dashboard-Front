@@ -2,9 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { Navigate } from 'react-router-dom';
 
-import { Title, SubTitle } from '../components/styled';
-
+import { Title, SubTitle, UserPhoto } from '../components/styled';
+import CardMessage from '../components/cardMessage';
 import Header from '../layout/header'
+
+import data from '../JSON/contactMessage.json';
+import user from '../resources/Imagenes/user.jpeg';
 
 const Main = styled.main`
   padding-left: 18%;
@@ -28,6 +31,11 @@ const LogoKPIs = styled.svg`
 `;
 
 export default function Home() {
+  
+  // Request messages
+
+  console.log(data.messages);
+
 
   if (localStorage.getItem("login") != "true") {
     return (
@@ -38,7 +46,7 @@ export default function Home() {
       <>
         <Header></Header>
         <Main>
-          <section style={{ display: 'flex', padding: '0 19px', marginTop: '50px',}}>
+          <section style={{ display: 'flex', padding: '0 31px', margin: '50px 0 40px 0',}}>
             <Card>
               <LogoKPIs width="24px" height="24px" fill='#E23428' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 9.557V3h-2v2H6V3H4v6.557C2.81 10.25 2 11.525 2 13v4a1 1 0 0 0 1 1h1v4h2v-4h12v4h2v-4h1a1 1 0 0 0 1-1v-4c0-1.475-.811-2.75-2-3.443zM18 7v2h-5V7h5zM6 7h5v2H6V7zm14 9H4v-3c0-1.103.897-2 2-2h12c1.103 0 2 .897 2 2v3z" />
@@ -82,8 +90,13 @@ export default function Home() {
             </Card>
           </section>
 
-          <section>
-            
+          <section style={{ margin: '0 50px', padding:'30px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 4px 4px #00000005', borderRadius: '20px' }}>
+            <Title size='20px' lineHeight='30px' color='#393939' margin='0 0 30px 0'>Latest Review by Customers</Title>
+            <div style={{ display: 'flex', overflowX: 'auto', scrollbarWidth: 'none',}}>
+              {data.messages.map(message => (
+                <CardMessage key={message.id} name={message.name} email={message.email} phone={message.phone} subject={message.subject} message={message.message}/>
+              ))}
+            </div>
           </section>
         </Main>
       </>

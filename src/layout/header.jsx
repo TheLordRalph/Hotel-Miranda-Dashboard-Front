@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import { SubTitle, Title, Button } from '../components/styled';
+import { SubTitle, Title, Button, UserPhoto } from '../components/styled';
 
 import logo from '../resources/Imagenes/logo.png';
 import user from '../resources/Imagenes/user.jpeg';
@@ -180,7 +180,7 @@ export default function Header() {
 
 
                 <UserContainer>
-                    <img style={{ width: '80px', borderRadius: '8px', margin: '0 0 16px 0', transform: 'translateY(-40px)', }} src={user} alt="" />
+                    <UserPhoto margin='0 0 16px 0' style={{ transform: 'translateY(-40px)', }} src={user} alt="" />
                     <SubTitle style={{ transform: 'translateY(-40px)', }} margin='0 0 9px 0' width='100%' size='16px' lineHeight='25px' color='#393939'>Admin</SubTitle>
                     <SubTitle style={{ transform: 'translateY(-40px)', }} margin='0 0 16px 0' width='100%' size='12px' lineHeight='18px' weight='lighter'>admin@hotelmiranda.com</SubTitle>
                     <Button style={{ transform: 'translateY(-40px)', }} background='#EBF1EF' borderColor='#EBF1EF'>Contact Us</Button>
