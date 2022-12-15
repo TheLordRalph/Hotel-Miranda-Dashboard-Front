@@ -1,0 +1,88 @@
+{
+    "rooms": [
+        {
+            "idHabitacion": "#00000001",
+            "foto": [
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg"
+            ],
+            "numeroHabitacion": "91234",
+            "roomType": "Double Bed",
+            "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+            "price": "145",
+            "offerPrice": "135",
+            "status": "Available"
+        },
+        {
+            "idHabitacion": "#00000002",
+            "foto": [
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg"
+            ],
+            "numeroHabitacion": "91235",
+            "roomType": "Double Bed",
+            "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+            "price": "145",
+            "offerPrice": "135",
+            "status": "Booked"
+        },
+        {
+            "idHabitacion": "#00000003",
+            "foto": [
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg"
+            ],
+            "numeroHabitacion": "91236",
+            "roomType": "Double Bed",
+            "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+            "price": "145",
+            "offerPrice": "135",
+            "status": "Available"
+        },
+        {
+            "idHabitacion": "#00000004",
+            "foto": [
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg"
+            ],
+            "numeroHabitacion": "91237",
+            "roomType": "Double Bed",
+            "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+            "price": "145",
+            "offerPrice": "135",
+            "status": "Available"
+        },
+        {
+            "idHabitacion": "#00000005",
+            "foto": [
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg"
+            ],
+            "numeroHabitacion": "91238",
+            "roomType": "Double Bed",
+            "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+            "price": "145",
+            "offerPrice": "135",
+            "status": "Booked"
+        },
+        {
+            "idHabitacion": "#00000006",
+            "foto": [
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg",
+                "../resources/Imagenes/room01.jpg"
+            ],
+            "numeroHabitacion": "91239",
+            "roomType": "Double Bed",
+            "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+            "price": "145",
+            "offerPrice": "135",
+            "status": "Booked"
+        }
+    ]
+}

@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Navigate } from 'react-router-dom';
 
-import { Title, SubTitle, UserPhoto } from '../components/styled';
+import { Title, SubTitle, Photo } from '../components/styled';
 import CardMessage from '../components/cardMessage';
 import Header from '../layout/header'
 
-import data from '../JSON/contactMessage.json';
+import dataMessages from '../JSON/contactMessage.json';
 import user from '../resources/Imagenes/user.jpeg';
 
 const Main = styled.main`
@@ -31,11 +31,6 @@ const LogoKPIs = styled.svg`
 `;
 
 export default function Home() {
-  
-  // Request messages
-
-  console.log(data.messages);
-
 
   if (localStorage.getItem("login") != "true") {
     return (
@@ -93,7 +88,7 @@ export default function Home() {
           <section style={{ margin: '0 50px', padding:'30px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 4px 4px #00000005', borderRadius: '20px' }}>
             <Title size='20px' lineHeight='30px' color='#393939' margin='0 0 30px 0'>Latest Review by Customers</Title>
             <div style={{ display: 'flex', overflowX: 'auto', scrollbarWidth: 'none',}}>
-              {data.messages.map(message => (
+              {dataMessages.messages.map(message => (
                 <CardMessage key={message.id} name={message.name} email={message.email} phone={message.phone} subject={message.subject} message={message.message}/>
               ))}
             </div>

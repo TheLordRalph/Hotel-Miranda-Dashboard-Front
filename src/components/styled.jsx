@@ -32,8 +32,19 @@ export const Button = styled.button`
   border-color: ${props => props.borderColor ? props.borderColor : "#135846"};
 `;
 
-export const UserPhoto = styled.img`
+export const Photo = styled.img`
   width: ${props => props.width ? props.width : '80px'}; 
   border-radius: 8px; 
   margin: ${props => props.margin ? props.margin : '0'};
+  height: ${props => props.height ? props.height : '0'};
+`;
+
+
+export const Etiqueta = styled.div`
+width: ${props => props.width ? props.width : '125px'}; 
+font-weight: normal;
+font-size: 16px;
+border-radius: 12px;
+background: ${props => props.background == "Available" ? "#5AD07A" : "#E23428" };
+padding: ${props => props.padding ? props.padding : "0"};
 `;

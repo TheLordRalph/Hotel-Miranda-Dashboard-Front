@@ -1,4 +1,4 @@
-import { Title, SubTitle, UserPhoto } from '../components/styled';
+import { Title, SubTitle, Photo } from '../components/styled';
 
 export default function CardMessage(props) {
     return (
