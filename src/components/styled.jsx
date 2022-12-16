@@ -8,6 +8,7 @@ export const Title = styled.h1`
   width: ${props => props.width ? props.width : '100%'};
   margin: ${props => props.margin ? props.margin : '0'};
   align-self: center;
+  text-transform: ${props => props.textTransform ? props.textTransform : 'none'};
 `;
 
 export const SubTitle = styled.h2`

@@ -50,14 +50,8 @@ export default function Rooms() {
 
   const [rooms, setRooms] = useState(dataRooms.rooms);
 
-  if (localStorage.getItem("login") != "true") {
-    return (
-      <Navigate to="/" />
-    )
-  } else {
     return (
       <>
-        <Header />
         <Main>
           <Table borderRadius='20px 20px 0 0'>
             <Row row='1' column='1' width='265px'>Room</Row>
@@ -128,5 +122,4 @@ export default function Rooms() {
         </Main>
       </>
     )
-  }
 }

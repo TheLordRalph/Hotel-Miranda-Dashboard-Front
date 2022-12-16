@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
+import dataUsers from '../JSON/users.json';
 import { Title, Button } from '../components/styled';
 
 import logo from '../resources/Imagenes/logo.png';
@@ -51,13 +52,16 @@ export const Login = () => {
     let formData = new FormData(event.currentTarget);
     let email = formData.get("email");
     let password = formData.get("pass");
-    if (email === process.env.REACT_APP_EMAIL_DASHBOARD && password === process.env.REACT_APP_PASSWORD_DASHBOARD) {
-      event.currentTarget[1].setAttribute("style", 'color: #799283; border-color: #799283;');
-      localStorage.setItem("login", true);
-      navigate("/dashboard");
-    } else {
-      event.currentTarget[1].setAttribute("style", 'color: red; border-color: red;');
-    }
+
+    dataUsers.users.map(user => {
+      if (email === user.email && password === user.pass) {
+        event.currentTarget[1].setAttribute("style", 'color: #799283; border-color: #799283;');
+        localStorage.setItem("login", true);
+        navigate("/dashboard");
+      } else {
+        event.currentTarget[1].setAttribute("style", 'color: red; border-color: red;');
+      }
+    })
   }
 
   return (
