@@ -23,11 +23,11 @@ export const SubTitle = styled.h2`
 export const Button = styled.button`
   font-weight: 500;
   font-size: 16px;
-  padding: 15px 28px;
+  padding: ${props => props.padding ? props.padding : "15px 28px"};
   border: 1px solid #135846;
   border-radius: 12px;
   cursor: pointer;
-
+  margin: ${props => props.margin ? props.margin : '0'};
   background: ${props => props.background ? props.background : "white"};
   color: ${props => props.color ? props.color : "#135846"};
   border-color: ${props => props.borderColor ? props.borderColor : "#135846"};

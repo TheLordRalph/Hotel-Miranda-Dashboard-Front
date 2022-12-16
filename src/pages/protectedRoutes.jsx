@@ -10,7 +10,7 @@ export const useAuth = () => {
 const ProtectedRoutes = () => {
 
     const isAuth = useAuth();
-    return isAuth ? <Outlet /> : <Navigate to="/" />;
+    return isAuth == "true" ? <Outlet /> : <Navigate to="/" />;
 
 };
 

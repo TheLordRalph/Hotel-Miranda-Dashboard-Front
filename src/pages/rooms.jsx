@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Navigate } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from 'react';
 
-import { Title, SubTitle, Photo, Etiqueta } from '../components/styled';
+import { Title, SubTitle, Photo, Etiqueta, Button } from '../components/styled';
 import CardMessage from '../components/cardMessage';
 import Header from '../layout/header'
 
@@ -46,80 +46,155 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
+const values = [
+  { 
+    name: "price", 
+    order: "asc" 
+  },
+  { 
+    name: "price", 
+    order: "des" 
+  },
+  // { 
+  //   name: "Available", 
+  //   order: "state" 
+  // },
+  // { 
+  //   name: "Booked", 
+  //   order: "state" 
+  // }
+]
+
 export default function Rooms() {
 
   const [rooms, setRooms] = useState(dataRooms.rooms);
 
-    return (
-      <>
-        <Main>
-          <Table borderRadius='20px 20px 0 0'>
-            <Row row='1' column='1' width='265px'>Room</Row>
-            <Row row='1' column='2' width='90px'>Room Type</Row>
-            <Row row='1' column='3' width='250px'>Amenities</Row>
-            <Row row='1' column='4' width='90px'>Price</Row>
-            <Row row='1' column='5' width='90px'>Offer Price</Row>
-            <Row row='1' column='6' width='125px'>Status</Row>
-          </Table>
+  const [reRender, setReRender] = useState({name:"", order:""})
 
-          <DragDropContext onDragEnd={(result) => {
-            const { source, destination } = result;
-            if (!destination) {
-              return;
-            }
-            if (
-              source.index === destination.index &&
-              source.droppableId === destination.droppableId
-            ) {
-              return;
-            }
+  useEffect(()=>{
 
-            setRooms((prevRooms) =>
-              reorder(prevRooms, source.index, destination.index)
-            );
-          }}>
-            <Droppable droppableId="rooms">
-              {(droppableProvided) => (
-                <section borderRadius='0 0 20px 20px' {...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
-                  {rooms.map((room, index) => (
-                    <Draggable key={room.idHabitacion} draggableId={room.idHabitacion} index={index}>
-                      {(draggableProvided) => (
-                        <Table borderRadius='0' {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps}>
-                          <Row row='1' column='1' display='flex' alignItems='center' width='265px'>
-                            <Photo src={photo} width='150px' margin='0 28px 0 0' height='77px' />
-                            <div>
-                              <SubTitle size='14px' lineHeight='27px' margin='0 0 12px 0'>{room.idHabitacion}</SubTitle>
-                              <Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{room.numeroHabitacion}</Title>
-                            </div>
-                          </Row>
-                          <Row row='1' column='2' margin='46px 0 0 0' width='90px'>
-                            <Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{room.roomType}</Title>
-                          </Row>
-                          <Row row='1' column='3' width='249px' margin='auto 0 0 0' width='250px'>
-                            <Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{room.amenities}</Title>
-                          </Row>
-                          <Row row='1' column='4' margin='46px 0 0 0' display='flex' alignItems='center' width='90px'>
-                            <Title weight='bolder' size='16px' lineHeight='25px' color='#393939' width='fit-content'>${room.price}</Title>
-                            <SubTitle weight='normal' size='14px' lineHeight='21px' color='#799283' margin='0 0 0 8px'>/night</SubTitle>
-                          </Row>
-                          <Row row='1' column='5' margin='46px 0 0 0' display='flex' alignItems='center' width='90px'>
-                            <Title weight='bolder' size='16px' lineHeight='25px' color='#393939' width='fit-content'>${room.offerPrice}</Title>
-                            <SubTitle weight='normal' size='14px' lineHeight='21px' color='#799283' margin='0 0 0 8px'>/night</SubTitle>
-                          </Row>
-                          <Row row='1' column='6' margin='46px 0 0 0' width='125px'>
-                            <Etiqueta padding='13px 0 13px 0' background={room.status}>
-                              <Title weight='normal' size='16px' lineHeight='25px' color='#FFFFFF' width='fit-content' margin='auto'>{room.status}</Title>
-                            </Etiqueta>
-                          </Row>
-                        </Table>
-                      )}
-                    </Draggable>
-                  ))}
-                </section>
-              )}
-            </Droppable>
-          </DragDropContext>
-        </Main>
-      </>
-    )
+    const value = reRender;
+    const roomsOrder = rooms;
+    console.log(reRender);
+
+    if (value.order === "des") {
+      setRooms(rooms.sort(function(a, b) {return a[value.name] - b[value.name]}));
+
+    } else if (value.order === "asc") {
+      setRooms(rooms.sort(function(a, b) {return b[value.name] - a[value.name]}));
+
+    } 
+  },[reRender])
+
+  function forceReRender(element) {
+    setReRender(element.target.value);
+  }
+
+  // function handleOrderBy() {
+  //   const element = document.getElementById("order");
+  //   const value = JSON.parse(element.value);
+  //   const roomsOrder = rooms;
+    
+
+  //   if (value.order === "des") {
+  //     roomsOrder.sort(function(a, b) {return a[value.name] - b[value.name]});
+  //     setRooms(roomsOrder);
+
+  //   } else if (value.order === "asc") {
+  //     roomsOrder.sort(function(a, b) {return b[value.name] - a[value.name]});
+  //     setRooms(roomsOrder);
+
+  //   } 
+  //   // else if (value.order === "state") {
+  //   //   roomsOrder.sort(function(a, b) {return a[value.order] == value.name});
+  //   //   setRooms(roomsOrder);
+
+  //   // }
+  // }
+
+  return (
+    <>
+      <Main>
+        <div style={{ margin: '0 50px 28px 50px', textAlign: 'end', }}>
+          <Button color='#FFFFFF' background='#135846' padding='15px 59px' margin='0 20px 0 0'>+ New Room</Button>
+          <Button>Number Room
+            <svg style={{ marginLeft: '10px', }} xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </Button>
+          <select id='order' onChange={forceReRender}>
+            <option value={JSON.stringify(values[0])}>price 🠕</option>
+            <option value={JSON.stringify(values[1])}>price 🠗</option>
+          </select>
+        </div>
+
+        <Table borderRadius='20px 20px 0 0'>
+          <Row row='1' column='1' width='265px'>Room</Row>
+          <Row row='1' column='2' width='90px'>Room Type</Row>
+          <Row row='1' column='3' width='250px'>Amenities</Row>
+          <Row row='1' column='4' width='90px'>Price</Row>
+          <Row row='1' column='5' width='90px'>Offer Price</Row>
+          <Row row='1' column='6' width='125px'>Status</Row>
+        </Table>
+
+        <DragDropContext onDragEnd={(result) => {
+          const { source, destination } = result;
+          if (!destination) {
+            return;
+          }
+          if (
+            source.index === destination.index &&
+            source.droppableId === destination.droppableId
+          ) {
+            return;
+          }
+
+          setRooms((prevRooms) =>
+            reorder(prevRooms, source.index, destination.index)
+          );
+        }}>
+          <Droppable droppableId="rooms">
+            {(droppableProvided) => (
+              <section borderRadius='0 0 20px 20px' {...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
+                {rooms.map((room, index) => (
+                  <Draggable key={room.idHabitacion} draggableId={room.idHabitacion} index={index}>
+                    {(draggableProvided) => (
+                      <Table borderRadius='0' {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps}>
+                        <Row row='1' column='1' display='flex' alignItems='center' width='265px'>
+                          <Photo src={photo} width='150px' margin='0 28px 0 0' height='77px' />
+                          <div>
+                            <SubTitle size='14px' lineHeight='27px' margin='0 0 12px 0'>{room.idHabitacion}</SubTitle>
+                            <Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{room.numeroHabitacion}</Title>
+                          </div>
+                        </Row>
+                        <Row row='1' column='2' margin='46px 0 0 0' width='90px'>
+                          <Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{room.roomType}</Title>
+                        </Row>
+                        <Row row='1' column='3' margin='auto 0 0 0' width='250px'>
+                          <Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{room.amenities}</Title>
+                        </Row>
+                        <Row row='1' column='4' margin='46px 0 0 0' display='flex' alignItems='center' width='90px'>
+                          <Title weight='bolder' size='16px' lineHeight='25px' color='#393939' width='fit-content'>${room.price}</Title>
+                          <SubTitle weight='normal' size='14px' lineHeight='21px' color='#799283' margin='0 0 0 8px'>/night</SubTitle>
+                        </Row>
+                        <Row row='1' column='5' margin='46px 0 0 0' display='flex' alignItems='center' width='90px'>
+                          <Title weight='bolder' size='16px' lineHeight='25px' color='#393939' width='fit-content'>${room.offerPrice}</Title>
+                          <SubTitle weight='normal' size='14px' lineHeight='21px' color='#799283' margin='0 0 0 8px'>/night</SubTitle>
+                        </Row>
+                        <Row row='1' column='6' margin='46px 0 0 0' width='125px'>
+                          <Etiqueta padding='13px 0 13px 0' background={room.status}>
+                            <Title weight='normal' size='16px' lineHeight='25px' color='#FFFFFF' width='fit-content' margin='auto'>{room.status}</Title>
+                          </Etiqueta>
+                        </Row>
+                      </Table>
+                    )}
+                  </Draggable>
+                ))}
+              </section>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </Main>
+    </>
+  )
 }

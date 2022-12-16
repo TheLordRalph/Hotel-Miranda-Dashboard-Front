@@ -16,6 +16,7 @@ const Main = styled.main`
 
 const Card = styled.div`
   padding: 30px;
+  width: -webkit-fill-available;
   width: -moz-available;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 4px #00000005;

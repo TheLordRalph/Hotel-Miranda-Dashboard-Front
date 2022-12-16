@@ -184,7 +184,7 @@ export default function Header() {
 
 
                     <UserContainer>
-                        <Photo margin='0 0 16px 0' style={{ transform: 'translateY(-40px)', }} src={user} alt="" />
+                        <Photo margin='0 0 16px 0' height='80px' style={{ transform: 'translateY(-40px)', }} src={user} alt="" />
                         <SubTitle style={{ transform: 'translateY(-40px)', }} margin='0 0 9px 0' width='100%' size='16px' lineHeight='25px' color='#393939'>Admin</SubTitle>
                         <SubTitle style={{ transform: 'translateY(-40px)', }} margin='0 0 16px 0' width='100%' size='12px' lineHeight='18px' weight='lighter'>admin@hotelmiranda.com</SubTitle>
                         <Button style={{ transform: 'translateY(-40px)', }} background='#EBF1EF' borderColor='#EBF1EF'>Contact Us</Button>
