@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from 'react';
 
-import { Title, SubTitle, Photo, Etiqueta, Button } from '../components/styled';
+import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main} from '../components/styled';
 import CardMessage from '../components/cardMessage';
 import Header from '../layout/header'
 
@@ -12,31 +12,6 @@ import dataRooms from '../JSON/rooms.json';
 import photo from '../resources/Imagenes/room01.jpg'
 import user from '../resources/Imagenes/user.jpeg';
 
-const Main = styled.main`
-  padding-left: 18%;
-  transition: padding 2s;
-`;
-
-const Table = styled.section`
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 4px 4px #00000005;
-  border-radius: ${props => props.borderRadius ? props.borderRadius : '0'};
-  border-bottom: 2px solid #f5f5f5;
-  display: grid;
-  margin: 0 50px;
-  padding: 20px 30px;
-  grid-row-gap: 40px;
-`;
-
-const Row = styled.div`
-  width: ${props => props.width ? props.width : 'auto'}; 
-  border: ${props => props.border ? props.border : 'none'};
-  grid-row: ${props => props.row ? props.row : 'none'};
-  grid-column: ${props => props.column ? props.column : 'none'};
-  display: ${props => props.display ? props.display : 'block'};
-  align-items: ${props => props.alignItems ? props.alignItems : 'start'};
-  margin: ${props => props.margin ? props.margin : '0'};
-`;
 
 const reorder = (list, startIndex, endIndex) => {
   const result = [...list];
@@ -129,12 +104,13 @@ export default function Rooms() {
         </div>
 
         <Table borderRadius='20px 20px 0 0'>
-          <Row row='1' column='1' width='265px'>Room</Row>
-          <Row row='1' column='2' width='90px'>Room Type</Row>
-          <Row row='1' column='3' width='250px'>Amenities</Row>
-          <Row row='1' column='4' width='90px'>Price</Row>
-          <Row row='1' column='5' width='90px'>Offer Price</Row>
-          <Row row='1' column='6' width='125px'>Status</Row>
+          <Column row='1' column='1' width='265px'>Room</Column>
+          <Column row='1' column='2' width='90px'>Room Type</Column>
+          <Column row='1' column='3' width='250px'>Amenities</Column>
+          <Column row='1' column='4' width='90px'>Price</Column>
+          <Column row='1' column='5' width='90px'>Offer Price</Column>
+          <Column row='1' column='6' width='125px'>Status</Column>
+          <Column row='1' column='8' width='10px'></Column>
         </Table>
 
         <DragDropContext onDragEnd={(result) => {
@@ -160,32 +136,39 @@ export default function Rooms() {
                   <Draggable key={room.idHabitacion} draggableId={room.idHabitacion} index={index}>
                     {(draggableProvided) => (
                       <Table borderRadius='0' {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps}>
-                        <Row row='1' column='1' display='flex' alignItems='center' width='265px'>
+                        <Column row='1' column='1' display='flex' alignItems='center' width='265px'>
                           <Photo src={photo} width='150px' margin='0 28px 0 0' height='77px' />
                           <div>
                             <SubTitle size='14px' lineHeight='27px' margin='0 0 12px 0'>{room.idHabitacion}</SubTitle>
                             <Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{room.numeroHabitacion}</Title>
                           </div>
-                        </Row>
-                        <Row row='1' column='2' margin='46px 0 0 0' width='90px'>
+                        </Column>
+                        <Column row='1' column='2' margin='46px 0 0 0' width='90px'>
                           <Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{room.roomType}</Title>
-                        </Row>
-                        <Row row='1' column='3' margin='auto 0 0 0' width='250px'>
+                        </Column>
+                        <Column row='1' column='3' margin='auto 0 0 0' width='250px'>
                           <Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{room.amenities}</Title>
-                        </Row>
-                        <Row row='1' column='4' margin='46px 0 0 0' display='flex' alignItems='center' width='90px'>
+                        </Column>
+                        <Column row='1' column='4' margin='46px 0 0 0' display='flex' alignItems='center' width='90px'>
                           <Title weight='bolder' size='16px' lineHeight='25px' color='#393939' width='fit-content'>${room.price}</Title>
                           <SubTitle weight='normal' size='14px' lineHeight='21px' color='#799283' margin='0 0 0 8px'>/night</SubTitle>
-                        </Row>
-                        <Row row='1' column='5' margin='46px 0 0 0' display='flex' alignItems='center' width='90px'>
+                        </Column>
+                        <Column row='1' column='5' margin='46px 0 0 0' display='flex' alignItems='center' width='90px'>
                           <Title weight='bolder' size='16px' lineHeight='25px' color='#393939' width='fit-content'>${room.offerPrice}</Title>
                           <SubTitle weight='normal' size='14px' lineHeight='21px' color='#799283' margin='0 0 0 8px'>/night</SubTitle>
-                        </Row>
-                        <Row row='1' column='6' margin='46px 0 0 0' width='125px'>
+                        </Column>
+                        <Column row='1' column='6' margin='46px 0 0 0' width='125px'>
                           <Etiqueta padding='13px 0 13px 0' background={room.status}>
                             <Title weight='normal' size='16px' lineHeight='25px' color='#FFFFFF' width='fit-content' margin='auto'>{room.status}</Title>
                           </Etiqueta>
-                        </Row>
+                        </Column>
+                        <Column row='1' column='8' width='10px'>
+                          <Button padding='0 0 0 20px' background='none' color='black' border='none'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                              <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                          </Button>
+                        </Column>
                       </Table>
                     )}
                   </Draggable>

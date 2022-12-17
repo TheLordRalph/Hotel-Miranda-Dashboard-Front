@@ -2,17 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { Navigate } from 'react-router-dom';
 
-import { Title, SubTitle, Photo } from '../components/styled';
+import { Title, SubTitle, Photo, Main } from '../components/styled';
 import CardMessage from '../components/cardMessage';
-import Header from '../layout/header'
+import Header from '../layout/header';
 
 import dataMessages from '../JSON/contactMessage.json';
 import user from '../resources/Imagenes/user.jpeg';
-
-const Main = styled.main`
-  padding-left: 18%;
-  transition: padding 2s;
-`;
 
 const Card = styled.div`
   padding: 30px;
