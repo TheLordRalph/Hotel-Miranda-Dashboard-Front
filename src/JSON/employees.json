@@ -1,0 +1,76 @@
+{
+    "employees": [
+        {
+            "id": "#000001",
+            "nombre": "James Sitepu",
+            "email": "JamesSitepu@hotelmiranda.com",
+            "fechaAlta": "Aug 2th 2017",
+            "description": "Answering guest inquiries, directing phone calls, coordinating travel plans, and more.",
+            "tlf": "012 334 55512",
+            "status": "Active"
+        },
+        {
+            "id": "#000001",
+            "nombre": "James Sitepu",
+            "email": "JamesSitepu@hotelmiranda.com",
+            "fechaAlta": "Aug 2th 2017",
+            "description": "Answering guest inquiries, directing phone calls, coordinating travel plans, and more.",
+            "tlf": "012 334 55512",
+            "status": "Active"
+        },
+        {
+            "id": "#000001",
+            "nombre": "James Sitepu",
+            "email": "JamesSitepu@hotelmiranda.com",
+            "fechaAlta": "Aug 2th 2017",
+            "description": "Answering guest inquiries, directing phone calls, coordinating travel plans, and more.",
+            "tlf": "012 334 55512",
+            "status": "Active"
+        },
+        {
+            "id": "#000001",
+            "nombre": "James Sitepu",
+            "email": "JamesSitepu@hotelmiranda.com",
+            "fechaAlta": "Aug 2th 2017",
+            "description": "Answering guest inquiries, directing phone calls, coordinating travel plans, and more.",
+            "tlf": "012 334 55512",
+            "status": "Active"
+        },
+        {
+            "id": "#000001",
+            "nombre": "James Sitepu",
+            "email": "JamesSitepu@hotelmiranda.com",
+            "fechaAlta": "Aug 2th 2017",
+            "description": "Answering guest inquiries, directing phone calls, coordinating travel plans, and more.",
+            "tlf": "012 334 55512",
+            "status": "Active"
+        },
+        {
+            "id": "#000001",
+            "nombre": "James Sitepu",
+            "email": "JamesSitepu@hotelmiranda.com",
+            "fechaAlta": "Aug 2th 2017",
+            "description": "Answering guest inquiries, directing phone calls, coordinating travel plans, and more.",
+            "tlf": "012 334 55512",
+            "status": "Active"
+        },
+        {
+            "id": "#000001",
+            "nombre": "James Sitepu",
+            "email": "JamesSitepu@hotelmiranda.com",
+            "fechaAlta": "Aug 2th 2017",
+            "description": "Answering guest inquiries, directing phone calls, coordinating travel plans, and more.",
+            "tlf": "012 334 55512",
+            "status": "Active"
+        },
+        {
+            "id": "#000001",
+            "nombre": "James Sitepu",
+            "email": "JamesSitepu@hotelmiranda.com",
+            "fechaAlta": "Aug 2th 2017",
+            "description": "Answering guest inquiries, directing phone calls, coordinating travel plans, and more.",
+            "tlf": "012 334 55512",
+            "status": "Active"
+        }
+    ]
+}

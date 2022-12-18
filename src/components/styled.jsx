@@ -60,6 +60,8 @@ export const Etiqueta = styled.div`
     return "#E2E2E2";
   } else if (props.background == "Canceled") {
     return "#575757";
+  } else if (props.background == "Active" || props.background == "Inactivce") {
+    return "none";
   }}};
   padding: ${props => props.padding ? props.padding : "0"};
 `;
