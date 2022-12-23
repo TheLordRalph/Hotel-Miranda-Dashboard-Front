@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { Title, SubTitle, Photo, Main } from '../components/styled';
 import CardMessage from '../components/cardMessage';
 import Header from '../layout/header';
+import Histogram from '../components/histogram.tsx';
 
 import dataMessages from '../JSON/contactMessage.json';
 import user from '../resources/Imagenes/user.jpeg';
@@ -75,6 +76,8 @@ export default function Home() {
             </div>
           </Card>
         </section>
+
+       <Histogram />
 
         <section style={{ margin: '0 50px', padding:'30px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 4px 4px #00000005', borderRadius: '20px' }}>
           <Title size='20px' lineHeight='30px' color='#393939' margin='0 0 30px 0'>Latest Review by Customers</Title>
