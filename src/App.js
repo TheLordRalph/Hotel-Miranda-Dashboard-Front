@@ -18,7 +18,6 @@ function App() {
         <Route element={<ProtectedRoutes />}>
           <Route path='/dashboard' element={<Home />}></Route>
           <Route path='/booking' element={<Booking />}></Route>
-          <Route path='/booking:guest' element={<Booking />}></Route>
           <Route path='/booking:id' element={<Booking />}></Route>
           <Route path='/room' element={<Rooms />}></Route>
           <Route path='/users' element={<Users />}></Route>

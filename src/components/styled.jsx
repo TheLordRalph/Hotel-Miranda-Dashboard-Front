@@ -14,6 +14,7 @@ export const Title = styled.h1`
   margin: ${props => props.margin ? props.margin : '0'};
   align-self: center;
   text-transform: ${props => props.textTransform ? props.textTransform : 'none'};
+  text-align: ${props => props.textAlign ? props.textAlign : 'inherit'}
 `;
 
 export const SubTitle = styled.h2`
@@ -25,9 +26,27 @@ export const SubTitle = styled.h2`
   margin: ${props => props.margin ? props.margin : '0'};
 `;
 
+export const Input = styled.input.attrs(props => ({
+  type: props.type,
+  size: props.size || "1em",
+  }))`
+  width: 100%;
+  padding: 14px 12px;
+  border: 1px solid #799283;
+  color: #799283;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-bottom: 28px;
+  &:invalid {
+    color: red; 
+    border-color: red;
+  }
+`;
+
 export const Button = styled.button`
   font-weight: 500;
-  font-size: 16px;
+  font-size: ${props => props.fontSize ? props.fontSize : "16px"};
+  width: ${props => props.width ? props.width : "auto"};
   padding: ${props => props.padding ? props.padding : "15px 28px"};
   border: ${props => props.border ? props.border : "1px solid #135846"};
   border-radius: 12px;

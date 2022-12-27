@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from 'react';
 
 import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main} from '../components/styled';
 import CardMessage from '../components/cardMessage';
+import NewRoom from '../components/newRoom';
 import Header from '../layout/header'
 
 import dataRooms from '../JSON/rooms.json';
 import photo from '../resources/Imagenes/room01.jpg'
 import user from '../resources/Imagenes/user.jpeg';
+import { render } from 'react-dom';
 
 
 const reorder = (list, startIndex, endIndex) => {
@@ -41,6 +43,10 @@ const values = [
 ]
 
 export default function Rooms() {
+
+  let navigate = useNavigate();
+
+  const [modal, setModal] = useState({show: false});
 
   const [rooms, setRooms] = useState(dataRooms.rooms);
 
@@ -91,7 +97,8 @@ export default function Rooms() {
     <>
       <Main>
         <div style={{ margin: '0 50px 28px 50px', textAlign: 'end', }}>
-          <Button color='#FFFFFF' background='#135846' padding='15px 59px' margin='0 20px 0 0'>+ New Room</Button>
+          <Button color='#FFFFFF' background='#135846' padding='15px 59px' margin='0 20px 0 0' onClick={() => {setModal({show: true})}}>+ New Room</Button>
+          <NewRoom show={modal}/>
           <Button>Number Room
             <svg style={{ marginLeft: '10px', }} xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />

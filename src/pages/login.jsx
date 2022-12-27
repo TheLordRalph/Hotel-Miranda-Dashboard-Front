@@ -3,33 +3,10 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 import dataUsers from '../JSON/users.json';
-import { Title, Button } from '../components/styled';
+import { Title, Button, Input } from '../components/styled';
 
 import logo from '../resources/Imagenes/logo.png';
 
-
-const Input = styled.input.attrs(props => ({
-  type: "email",
-  size: props.size || "1em",
-  }))`
-  width: 100%;
-  padding: 14px 12px;
-  border: 1px solid #799283;
-  color: #799283;
-  border-radius: 12px;
-  font-size: 16px;
-  margin-bottom: 28px;
-  &:invalid {
-    color: red; 
-    border-color: red;
-  }
-`;
-
-  // Input's attrs will be applied first, and then this attrs obj
-const PasswordInput = styled(Input).attrs({
-  type: "password",
-  })`
-`;
 
 const SubTitle = styled.p`
   font-weight: 500;
@@ -70,8 +47,8 @@ export const Login = () => {
           <div style={{ display: 'flex', flexWrap: 'wrap', width: '50%', padding: '41px 49px', justifyContent: 'space-between', }}>
             <Title margin='0 0 21px 0'>Login</Title>
             <form onSubmit={handleSubmit}>
-              <Input placeholder="Email" name="email" size="2em" />
-              <PasswordInput placeholder="Password" name="pass" size="2em" />
+              <Input type='email' placeholder="Email" name="email" size="2em" />
+              <Input type='password' placeholder="Password" name="pass" size="2em" />
               <SubTitle>Email: admin@hotelmiranda.com<br/>Password: Admin1234</SubTitle>
               <Button primary>Login</Button>
             </form>
