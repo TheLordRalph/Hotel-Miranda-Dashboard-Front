@@ -12,7 +12,7 @@ class Histogram extends Component {
 
     drawChart() {
         // set the dimensions and margins of the graph
-        const margin = { top: 10, right: 30, bottom: 20, left: 50 },
+        const margin = { top: 10, right: 40, bottom: 20, left: 50 },
             width = 560 - margin.left - margin.right,
             height = 400 - margin.top - margin.bottom;
 
@@ -21,9 +21,10 @@ class Histogram extends Component {
         // append the svg object to the body of the page
         const svg = d3.select('#my_dataviz')
             .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .attr("transform", `translate(${margin.left},${margin.top})`);
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
 
     
 
@@ -48,14 +49,14 @@ class Histogram extends Component {
             .domain([10, 60])
             .range([height, 0]);
         svg.append("g")
-            .call(d3.axisLeft(y));
+            .call(d3.axisLeft(y).ticks(5, "$.2f").tickSize(10));
 
         const y2 = d3.scaleLinear()
             .domain([0, 100])
             .range([height, 0]);
         svg.append("g")
-            .attr("transform", `translate(${width}, 0)`)
-            .call(d3.axisRight(y2));
+            .attr("transform", `translate(0, 0)`)
+            .call(d3.axisRight(y2).ticks(5).tickFormat(function(d) { return d + "%"; }).tickSize(width));
 
         // Another scale for subgroup position?
         const xSubgroup = d3.scaleBand()
@@ -66,7 +67,7 @@ class Histogram extends Component {
         // color palette = one color per subgroup
         const color = d3.scaleOrdinal()
             .domain(typeData)
-            .range(['#e41a1c', '#4daf4a'])
+            .range(['#135846', '#E23428'])
 
         // Show the bars
         typeData.map(type => (
