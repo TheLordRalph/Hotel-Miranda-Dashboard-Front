@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Navigate } from 'react-router-dom';
+
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
 
 import { Title, SubTitle, Photo, Main } from '../components/styled';
 import CardMessage from '../components/cardMessage';
 import Header from '../layout/header';
 import Histogram from '../components/histogram.jsx';
 
+import dataBookings from '../JSON/booking.json';
 import dataMessages from '../JSON/contactMessage.json';
 import user from '../resources/Imagenes/user.jpeg';
 
@@ -27,7 +32,78 @@ const LogoKPIs = styled.svg`
   border-radius: 8px;
 `;
 
+const Calendar = styled.div`
+width: 400px;
+.fc {
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  margin-right: 40px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 4px 4px #00000005;
+  border-radius: 20px;
+}
+.fc td, .fc th, .fc-scrollgrid {
+  border-style: none;
+  background: none;
+}
+.fc .fc-event {
+  border-radius: 20px;
+}
+.fc .fc-day-today {
+  background: none !important;
+}
+.fc .fc-daygrid-day-frame {
+  padding: 14px 19px;
+  display: flex;
+}
+`;
+
+const ContainerReservas = styled.div`
+display: flex;
+flex-wrap: wrap;
+margin: 0 50px 40px 50px;
+`;
+
+const Reservas = styled.div`
+display: flex;
+margin: 0 50px 40px 50px;
+`;
+
 export default function Home() {
+
+  const [bookings, setBookings] = useState(dataBookings);
+
+  const handleDateClick = (selectionInfo) => { 
+
+    console.log(selectionInfo);
+    createCardsBookings(selectionInfo.startStr, selectionInfo.endStr);
+
+    const date = new Date(selectionInfo.start);
+    if (date.getDay() == 1) {
+      
+    }
+  }
+
+  const createCardsBookings = (dateStart, dateEnd) => {
+    dataBookings.bookings.map(booking => (
+      null
+    ))
+  }
+
+  // const setEvents = () => {
+  //   let events = [];
+  //   dataBookings.bookings.map(booking => (
+  //     {
+  //       groupId: booking.id,
+  //       start: booking.checkIn,
+  //       overlap: false,
+  //       display: "background"
+  //     }
+  // ))
+  //   return events;
+  // }
+
 
   return (
     <>
@@ -77,7 +153,42 @@ export default function Home() {
           </Card>
         </section>
 
-       <Histogram />
+        <section style={{ display: 'flex' }}>
+            <Calendar>
+              <FullCalendar
+                headerToolbar={{
+                  start: '',
+                  end: 'prev title next'
+                }}
+                firstDay={1}
+                plugins={[ dayGridPlugin, interactionPlugin ]}
+                initialView="dayGridMonth"
+                select={handleDateClick}
+                windowResize
+                aspectRatio={1}
+                contentHeight={390}
+                fixedWeekCount={false}
+                selectable={true}
+                showNonCurrentDates={false}
+                // events={setEvents}
+              />
+            </Calendar>
+
+          <Histogram />
+        </section>
+
+        <ContainerReservas id='container_reservas'>
+          {createCardsBookings}
+          <Reservas>
+            <Photo src={user} alt="" height="100%"/>
+            <div>
+              <Title>Doble Delux - Numero Habitacion</Title>
+              <SubTitle>Sñ. Ojete Sucio</SubTitle>
+              <SubTitle>12-03-2022 -- 18-03-2022</SubTitle>
+            </div>
+          </Reservas>
+
+        </ContainerReservas>
 
         <section style={{ margin: '0 50px', padding:'30px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 4px 4px #00000005', borderRadius: '20px' }}>
           <Title size='20px' lineHeight='30px' color='#393939' margin='0 0 30px 0'>Latest Review by Customers</Title>

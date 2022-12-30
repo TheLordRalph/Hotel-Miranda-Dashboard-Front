@@ -13,8 +13,8 @@ class Histogram extends Component {
     drawChart() {
         // set the dimensions and margins of the graph
         const margin = { top: 10, right: 40, bottom: 20, left: 50 },
-            width = 560 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
+            width = 460 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
 
 
 
@@ -26,9 +26,7 @@ class Histogram extends Component {
             .append("g")
                 .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    
 
-        console.log(dataReservation.checkIn);
 
 
         const typeData = ['price', 'ocupation'];
@@ -62,12 +60,12 @@ class Histogram extends Component {
         const xSubgroup = d3.scaleBand()
             .domain(typeData)
             .range([0, x.bandwidth()])
-            .padding([0.2])
+            .padding([0.2]);
 
         // color palette = one color per subgroup
         const color = d3.scaleOrdinal()
             .domain(typeData)
-            .range(['#135846', '#E23428'])
+            .range(['#135846', '#E23428']);
 
         // Show the bars
         typeData.map(type => (
