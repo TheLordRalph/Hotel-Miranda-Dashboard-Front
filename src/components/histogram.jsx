@@ -1,7 +1,27 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
+import styled from 'styled-components';
 
 import dataReservation from '../JSON/reservation.json';
+
+
+
+const LeyendBar = styled.div`
+.leyendBar {
+    position: absolute;
+    width: fit-content;
+    text-align: center;
+    padding: 0.5rem;
+    background: #FFFFFF;
+    color: #313639;
+    border: 1px solid #313639;
+    border-radius: 8px;
+    pointer-events: none;
+    font-size: 1.3rem;
+}
+`;
+
+
 
 class Histogram extends Component {
 
@@ -26,7 +46,7 @@ class Histogram extends Component {
                 .attr("transform", `translate(${margin.left},${margin.top})`);
 
 
-        var div = d3.select('#my_dataviz').append("div")
+        var div = d3.select('#leyendBar').append('div')
             .attr("class", "leyendBar")
             .style("opacity", 0);
 
@@ -49,7 +69,7 @@ class Histogram extends Component {
             .domain([10, 60])
             .range([height, 0]);
         svg.append("g")
-            .call(d3.axisLeft(y).ticks(5, "$.2f").tickSize(10));
+            .call(d3.axisLeft(y).ticks(5).tickFormat(function(d) { return d + "€"; }).tickSize(10));
 
         const y2 = d3.scaleLinear()
             .domain([0, 100])
@@ -82,18 +102,18 @@ class Histogram extends Component {
             .attr("width", xSubgroup.bandwidth())
             .attr("height", (d, i) => type === 'price' ? height - y(d[type]) : height - y2(d[type]))
             .attr("fill", (d, i) => color(type))
-            .on('mouseover', function (d, i) {
+            .on('mouseover', (e, d) => {
                 d3.select(this).transition()
                         .duration('50')
                         .attr('opacity', '.85');
                 div.transition()
                         .duration(50)
                         .style("opacity", 1);
-                div.html(d[type])
-                        .style("left", xSubgroup(d[type]) + "px")
-                        .style("top", y(d[type]) + "px");
+                div.html(type === 'price' ? d[type] + " €" : d[type] + " %")
+                        .style("left", e.clientX + "px")
+                        .style("top", e.clientY + "px");
             })
-            .on('mouseout', function (d, i) {
+            .on('mouseout', function (e, d) {
                 d3.select(this).transition()
                         .duration('50')
                         .attr('opacity', '1');
@@ -106,7 +126,7 @@ class Histogram extends Component {
     }
 
     render(){
-        return <div id='my_dataviz'></div>
+        return <div id='my_dataviz'><LeyendBar id="leyendBar"/></div>
     }
 
 }
