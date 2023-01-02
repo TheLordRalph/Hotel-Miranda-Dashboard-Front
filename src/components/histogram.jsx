@@ -17,7 +17,6 @@ class Histogram extends Component {
             height = 300 - margin.top - margin.bottom;
 
 
-
         // append the svg object to the body of the page
         const svg = d3.select('#my_dataviz')
             .append("svg")
@@ -27,6 +26,9 @@ class Histogram extends Component {
                 .attr("transform", `translate(${margin.left},${margin.top})`);
 
 
+        var div = d3.select('#my_dataviz').append("div")
+            .attr("class", "leyendBar")
+            .style("opacity", 0);
 
 
         const typeData = ['price', 'ocupation'];
@@ -75,11 +77,30 @@ class Histogram extends Component {
             .append("g")
             .attr("transform", function(d, i) { return "translate(" + x(escale[i]) + ",0)"; })
             .append("rect")   
-                .attr("x", (d, i) => xSubgroup(type))
-                .attr("y", (d, i) => type === 'price' ? y(d[type]) : y2(d[type]))
-                .attr("width", xSubgroup.bandwidth())
-                .attr("height", (d, i) => type === 'price' ? height - y(d[type]) : height - y2(d[type]))
-                .attr("fill", (d, i) => color(type))
+            .attr("x", (d, i) => xSubgroup(type))
+            .attr("y", (d, i) => type === 'price' ? y(d[type]) : y2(d[type]))
+            .attr("width", xSubgroup.bandwidth())
+            .attr("height", (d, i) => type === 'price' ? height - y(d[type]) : height - y2(d[type]))
+            .attr("fill", (d, i) => color(type))
+            .on('mouseover', function (d, i) {
+                d3.select(this).transition()
+                        .duration('50')
+                        .attr('opacity', '.85');
+                div.transition()
+                        .duration(50)
+                        .style("opacity", 1);
+                div.html(d[type])
+                        .style("left", xSubgroup(d[type]) + "px")
+                        .style("top", y(d[type]) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                        .duration('50')
+                        .attr('opacity', '1');
+                div.transition()
+                        .duration('50')
+                        .style("opacity", 0);
+            })
         ));
 
     }
@@ -92,17 +113,3 @@ class Histogram extends Component {
 
 
 export default Histogram;
-
-
-
-
-// .attr("transform", d => `translate(${x(0)}, 0)`)
-// .selectAll("rect")
-// .data(function (d) { return d.checkIn.map(function (sub) { return sub; }); })
-// .join("rect")
-
-// .attr("x", d => xSubgroup(d.day))
-// .attr("y", d => y(d.value))
-// .attr("width", xSubgroup.bandwidth())
-// .attr("height", d => height - y(d.value))
-// .attr("fill", d => color(d.key));
