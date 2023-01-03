@@ -1,6 +1,7 @@
 {
     "users": [
         {
+            "user": "Admin",
             "email": "admin@hotelmiranda.com",
             "pass": "Admin1234"
         }

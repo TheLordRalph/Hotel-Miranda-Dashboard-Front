@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import dataUsers from '../JSON/users.json';
 import { Title, Button, Input } from '../components/styled';
+import { LoginContext } from '../App';
 
 import logo from '../resources/Imagenes/logo.png';
 
@@ -21,6 +22,7 @@ const SubTitle = styled.p`
 export const Login = () => {
 
   let navigate = useNavigate();
+  const { dispatch } = React.useContext(LoginContext)
 
 
   function handleSubmit(event) {
@@ -33,7 +35,8 @@ export const Login = () => {
     dataUsers.users.map(user => {
       if (email === user.email && password === user.pass) {
         event.currentTarget[1].setAttribute("style", 'color: #799283; border-color: #799283;');
-        localStorage.setItem("login", true);
+        dispatch({type: 'login', payload: user});
+        //localStorage.setItem("login", true);
         navigate("/dashboard");
       } else {
         event.currentTarget[1].setAttribute("style", 'color: red; border-color: red;');
