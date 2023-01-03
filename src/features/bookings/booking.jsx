@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main } from '../components/styled';
+import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main } from '../../components/styled';
 
-import dataBookings from '../JSON/booking.json';
+import dataBookings from '../../JSON/booking.json';
 
 export default function Booking() {
   return (

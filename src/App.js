@@ -5,10 +5,10 @@ import { Login } from './pages/login';
 import Header from './layout/header';
 import ProtectedRoutes from './pages/protectedRoutes';
 import Home from './pages/home';
-import Booking from './pages/booking';
-import Rooms from './pages/rooms';
-import Users from './pages/users';
-import Contact from './pages/contact';
+import Booking from './features/bookings/booking';
+import Rooms from './features/rooms/rooms';
+import Users from './features/users/users';
+import Contact from './features/contacts/contact';
 
 
 const initialState = {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main } from '../components/styled';
+import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main } from '../../components/styled';
 
-import dataEmployees from '../JSON/employees.json';
-import user from '../resources/Imagenes/user.jpeg';
+import dataEmployees from '../../JSON/employees.json';
+import user from '../../resources/Imagenes/user.jpeg';
 
 export default function Users() {
   return (

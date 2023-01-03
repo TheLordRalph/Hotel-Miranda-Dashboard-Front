@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main } from '../components/styled';
-import CardMessage from '../components/cardMessage';
+import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main } from '../../components/styled';
+import CardMessage from '../../components/cardMessage';
 
-import dataMessages from '../JSON/contactMessage.json';
+import dataMessages from '../../JSON/contactMessage.json';
 
-import user from '../resources/Imagenes/user.jpeg';
+import user from '../../resources/Imagenes/user.jpeg';
 
 export default function Contact() {
   return (

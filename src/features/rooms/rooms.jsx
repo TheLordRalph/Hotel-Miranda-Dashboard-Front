@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from 'react';
 
-import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main} from '../components/styled';
-import CardMessage from '../components/cardMessage';
-import NewRoom from '../components/newRoom';
-import Header from '../layout/header'
+import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main} from '../../components/styled';
+import CardMessage from '../../components/cardMessage';
+import NewRoom from '../../components/newRoom';
+import Header from '../../layout/header'
 
-import dataRooms from '../JSON/rooms.json';
-import photo from '../resources/Imagenes/room01.jpg'
-import user from '../resources/Imagenes/user.jpeg';
+import dataRooms from '../../JSON/rooms.json';
+import photo from '../../resources/Imagenes/room01.jpg'
+import user from '../../resources/Imagenes/user.jpeg';
 import { render } from 'react-dom';
 
 
