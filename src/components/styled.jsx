@@ -30,7 +30,7 @@ export const Input = styled.input.attrs(props => ({
   type: props.type,
   size: props.size || "1em",
   }))`
-  width: 100%;
+  width: ${props => props.width ? props.width : '100%'};
   padding: 14px 12px;
   border: 1px solid #799283;
   color: #799283;
