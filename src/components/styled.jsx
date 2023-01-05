@@ -24,6 +24,7 @@ export const SubTitle = styled.h2`
   color: ${props => props.color ? props.color : '#799283'};
   width: ${props => props.width ? props.width : 'fit-content'};
   margin: ${props => props.margin ? props.margin : '0'};
+  text-align: ${props => props.textAlign ? props.textAlign : 'inherit'}
 `;
 
 export const Input = styled.input.attrs(props => ({
@@ -31,12 +32,30 @@ export const Input = styled.input.attrs(props => ({
   size: props.size || "1em",
   }))`
   width: ${props => props.width ? props.width : '100%'};
+  height: ${props => props.height ? props.height : 'auto'};
   padding: 14px 12px;
   border: 1px solid #799283;
   color: #799283;
   border-radius: 12px;
   font-size: 16px;
-  margin-bottom: 28px;
+  margin: ${props => props.margin ? props.margin : '0 0 28px 0'};
+  opacity: ${props => props.opacity ? props.opacity : '1'};
+  &:invalid {
+    color: red; 
+    border-color: red;
+  }
+`;
+
+export const TextArea = styled.textarea`
+  width: ${props => props.width ? props.width : '100%'};
+  height: ${props => props.height ? props.height : 'auto'};
+  padding: 14px 12px;
+  border: 1px solid #799283;
+  color: #799283;
+  border-radius: 12px;
+  font-size: 16px;
+  margin: ${props => props.margin ? props.margin : '0 0 28px 0'};
+  opacity: ${props => props.opacity ? props.opacity : '1'};
   &:invalid {
     color: red; 
     border-color: red;
@@ -47,6 +66,7 @@ export const Button = styled.button`
   font-weight: 500;
   font-size: ${props => props.fontSize ? props.fontSize : "16px"};
   width: ${props => props.width ? props.width : "auto"};
+  height: ${props => props.height ? props.height : 'auto'};
   padding: ${props => props.padding ? props.padding : "15px 28px"};
   border: ${props => props.border ? props.border : "1px solid #135846"};
   border-radius: 12px;
@@ -66,6 +86,8 @@ export const Photo = styled.img`
 
 export const Etiqueta = styled.div`
   width: ${props => props.width ? props.width : '125px'}; 
+  height: ${props => props.height ? props.height : 'auto'};
+  margin: ${props => props.margin ? props.margin : '0'};
   font-weight: normal;
   font-size: 16px;
   border-radius: 12px;
@@ -81,6 +103,8 @@ export const Etiqueta = styled.div`
     return "#575757";
   } else if (props.background == "Active" || props.background == "Inactivce") {
     return "none";
+  } else {
+    return props.background;
   }}};
   padding: ${props => props.padding ? props.padding : "0"};
 `;
