@@ -9,6 +9,7 @@ import Booking from './features/bookings/booking';
 import Rooms from './features/rooms/rooms';
 import Users from './features/users/users';
 import Contact from './features/contacts/contact';
+import BookingDetail from './components/bookingDetail';
 
 
 const initialState = {
@@ -56,8 +57,8 @@ function App() {
           <Route element={<ProtectedRoutes />}>
             <Route path='/dashboard' element={<Home />}></Route>
             <Route path='/booking' element={<Booking />}></Route>
-            <Route path='/booking:id' element={<Booking />}></Route>
-            <Route path='/room' element={<Rooms />}></Route>
+            <Route path='/booking/:id' element={<BookingDetail />}></Route>
+            <Route path='/rooms' element={<Rooms />}></Route>
             <Route path='/users' element={<Users />}></Route>
             <Route path='/contact' element={<Contact />}></Route>
           </Route>

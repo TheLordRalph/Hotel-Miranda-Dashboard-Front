@@ -1,19 +1,22 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { Title, SubTitle, Photo, Etiqueta, Button, Table, Column, Main } from '../../components/styled';
 
 import dataBookings from '../../JSON/booking.json';
 
 export default function Booking() {
+  let navigate = useNavigate();
+
+
   return (
     <Main>
       <section style={{ display: 'flex', justifyContent: 'center', margin: '0 50px 28px 50px', alignItems: 'center' }}>
         <NavLink to={"/bookings"}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>All Guest</Title></NavLink>
-        <NavLink to={`/bookings/${'pending'}`}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>Pending</Title></NavLink>
-        <NavLink to={`/bookings/${'booked'}`}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>Booked</Title></NavLink>
-        <NavLink to={`/bookings/${'cancel'}`}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>Canceled</Title></NavLink>
-        <NavLink to={`/bookings/${'refound'}`}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>Refund</Title></NavLink>
+        <NavLink to={`/bookings`}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>Pending</Title></NavLink>
+        <NavLink to={`/bookings`}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>Booked</Title></NavLink>
+        <NavLink to={`/bookings`}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>Canceled</Title></NavLink>
+        <NavLink to={`/bookings`}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>Refund</Title></NavLink>
 
         <Button>Newest
           <svg style={{ marginLeft: '10px', }} xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
@@ -34,7 +37,7 @@ export default function Booking() {
       </Table>
 
       {dataBookings.bookings.map(booking => (
-        <Table key={booking.id} borderRadius='0'>
+        <Table key={booking.id} borderRadius='0' onClick={() => {navigate("/booking/:" + booking.id);}}>
           <Column row='1' column='1' width='146px'><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{booking.nombre}</Title><SubTitle size='14px' lineHeight='27px' margin='0 0 12px 0'>{booking.id}</SubTitle></Column>
           <Column row='1' column='2' width='120px'><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{booking.orderDate}</Title></Column>
           <Column row='1' column='3' width='110px'><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>{booking.checkIn}</Title></Column>
