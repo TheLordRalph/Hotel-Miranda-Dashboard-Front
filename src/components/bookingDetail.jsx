@@ -62,11 +62,23 @@ export default function BookingDetail() {
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
             >
-                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
-                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
-                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
-                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
-                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
+                <SwiperSlide>
+                    <img src={roomPhoto} alt="" style={{ height: '100%', }}/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={roomPhoto} alt="" style={{ height: '100%', }}/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={roomPhoto} alt="" style={{ height: '100%', }}/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={roomPhoto} alt="" style={{ height: '100%', }}/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={roomPhoto} alt="" style={{ height: '100%', }}/>
+                </SwiperSlide>
+                <Title size='24px' lineHeight='25px' width='-webkit-fill-available' color='white' margin='0 75px' position='absolute' transform='translateY(-730%)' zIndex='1'>Bed Room</Title>
+                <SubTitle size='14px' lineHeight='21px' width='-webkit-fill-available' color='#FFFFFF70' margin='0 75px' position='absolute' transform='translateY(-126px)' zIndex='1'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci</SubTitle>
             </Swiper>
         </Main>
     )

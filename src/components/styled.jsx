@@ -14,7 +14,10 @@ export const Title = styled.h1`
   margin: ${props => props.margin ? props.margin : '0'};
   align-self: center;
   text-transform: ${props => props.textTransform ? props.textTransform : 'none'};
-  text-align: ${props => props.textAlign ? props.textAlign : 'inherit'}
+  text-align: ${props => props.textAlign ? props.textAlign : 'inherit'};
+  transform: ${props => props.transform ? props.transform : 'none'};
+  position: ${props => props.position ? props.position : 'static'};
+  z-index: ${props => props.zIndex ? props.zIndex : 'auto'};
 `;
 
 export const SubTitle = styled.h2`
@@ -24,7 +27,10 @@ export const SubTitle = styled.h2`
   color: ${props => props.color ? props.color : '#799283'};
   width: ${props => props.width ? props.width : 'fit-content'};
   margin: ${props => props.margin ? props.margin : '0'};
-  text-align: ${props => props.textAlign ? props.textAlign : 'inherit'}
+  text-align: ${props => props.textAlign ? props.textAlign : 'inherit'};
+  transform: ${props => props.transform ? props.transform : 'none'};
+  position: ${props => props.position ? props.position : 'static'};
+  z-index: ${props => props.zIndex ? props.zIndex : 'auto'};
 `;
 
 export const Input = styled.input.attrs(props => ({
