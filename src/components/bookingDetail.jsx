@@ -1,25 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Navigation, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 import { Title, SubTitle, Main, Etiqueta } from '../components/styled';
+import roomPhoto from '../resources/Imagenes/room01.jpg';
 
 
 const CardBookingDetail = styled.section`
-    margin: 0 50px;
+    width: 50%;
+    margin: 0 0 0 50px;
     padding: 40px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 4px 4px #00000005;
-    border-radius: 12px;
+    border-radius: 12px 0 0 12px;
 `;
 
 export default function BookingDetail() {
 
     return (
-        <Main>
+        <Main style={{ display: 'flex', paddingRight: '50px', }}>
             <CardBookingDetail>
-                <div style={{ width: '50%', display: 'flex', flexWrap: 'wrap'}}>
+                <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap'}}>
                     <Title size='30px' lineHeight='46px'>Nombre Apellidos</Title>
                     <SubTitle width='100%' size='14px' lineHeight='21px' margin='0 0 30px 0'>Id Booking</SubTitle>
                     <div style={{ width: '50%'}}>
@@ -45,6 +53,21 @@ export default function BookingDetail() {
                     </div>
                 </div>
             </CardBookingDetail>
+            <Swiper
+            style={{ width: '45%', margin: '0', borderRadius: '0 12px 12px 0', }}
+            modules={[Navigation, A11y]}
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            >
+                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
+                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
+                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
+                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
+                <SwiperSlide><img src={roomPhoto} alt="" style={{ height: '100%', }}/></SwiperSlide>
+            </Swiper>
         </Main>
     )
 
