@@ -25,7 +25,7 @@ const CardBookingDetail = styled.section`
 export default function BookingDetail() {
 
     return (
-        <Main style={{ display: 'flex', paddingRight: '50px', }}>
+        <Main style={{ display: 'flex', marginRight: '50px', }}>
             <CardBookingDetail>
                 <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap'}}>
                     <Title size='30px' lineHeight='46px'>Nombre Apellidos</Title>
