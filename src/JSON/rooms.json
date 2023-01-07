@@ -11,7 +11,7 @@
             "roomType": "Double Bed",
             "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
             "price": 145,
-            "offerPrice": 135,
+            "offerPercent": 35,
             "status": "Available"
         },
         {
@@ -25,7 +25,7 @@
             "roomType": "Double Bed",
             "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
             "price": 199,
-            "offerPrice": 135,
+            "offerPercent": 25,
             "status": "Booked"
         },
         {
@@ -39,7 +39,7 @@
             "roomType": "Double Bed",
             "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
             "price": 300,
-            "offerPrice": 135,
+            "offerPercent": 5,
             "status": "Available"
         },
         {
@@ -53,7 +53,7 @@
             "roomType": "Double Bed",
             "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
             "price": 100,
-            "offerPrice": 135,
+            "offerPercent": 0,
             "status": "Available"
         },
         {
@@ -67,7 +67,7 @@
             "roomType": "Double Bed",
             "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
             "price": 160,
-            "offerPrice": 135,
+            "offerPercent": 50,
             "status": "Booked"
         },
         {
@@ -81,7 +81,7 @@
             "roomType": "Double Bed",
             "amenities": "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
             "price": 245,
-            "offerPrice": 200,
+            "offerPercent": 23,
             "status": "Booked"
         }
     ]

@@ -71,6 +71,8 @@ export const isModalActive = React.createContext();
 
 export default function Rooms() {
 
+  let navigate = useNavigate();
+
   const dispatch = useDispatch();
   const roomsSlice = useSelector((state) => state.roomsReducer);
   const [roomList, setRoomList] = useState(roomsSlice);
@@ -186,7 +188,7 @@ export default function Rooms() {
                 {roomsSlice.rooms.map((room, index) => (
                   <Draggable key={room.idHabitacion} draggableId={room.idHabitacion} index={index}>
                     {(draggableProvided) => (
-                      <Table borderRadius='0' {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps}>
+                      <Table borderRadius='0' {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => {navigate("/rooms/:" + room.idHabitacion);}}>
                         <Column row='1' column='1' display='flex' alignItems='center' width='265px'>
                           <Photo src={photo} width='150px' margin='0 28px 0 0' height='77px' />
                           <div>

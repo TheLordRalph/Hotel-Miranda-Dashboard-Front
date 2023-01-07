@@ -135,3 +135,15 @@ export const Column = styled.div`
   align-items: ${props => props.alignItems ? props.alignItems : 'start'};
   margin: ${props => props.margin ? props.margin : '0'};
 `;
+
+export const PageCardDetail = styled.section`
+    width: 50%;
+    margin: 0 0 0 50px;
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 4px #00000005;
+    border-radius: 12px 0 0 12px;
+`;
