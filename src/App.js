@@ -11,6 +11,7 @@ import Users from './features/users/users';
 import Contact from './features/contacts/contact';
 import BookingDetail from './components/bookingDetail';
 import RoomDetail from './components/roomDetail';
+import NewRoom from './components/newRoom';
 
 
 const initialState = {
@@ -61,6 +62,7 @@ function App() {
             <Route path='/booking/:id' element={<BookingDetail />}></Route>
             <Route path='/rooms' element={<Rooms />}></Route>
             <Route path='/rooms/:id' element={<RoomDetail />}></Route>
+            <Route path='/rooms/newroom' element={<NewRoom />}></Route>
             <Route path='/users' element={<Users />}></Route>
             <Route path='/contact' element={<Contact />}></Route>
           </Route>

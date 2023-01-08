@@ -143,10 +143,7 @@ export default function Rooms() {
     <>
       <Main>
         <div style={{ margin: '0 50px 28px 50px', textAlign: 'end', }}>
-          <Button color='#FFFFFF' background='#135846' padding='15px 59px' margin='0 20px 0 0' onClick={() => {setModal(true)}}>+ New Room</Button>
-          <isModalActive.Provider value={{modal, setModal}}>
-            <NewRoom />
-          </isModalActive.Provider>
+          <Button color='#FFFFFF' background='#135846' padding='15px 59px' margin='0 20px 0 0' onClick={() => {navigate("/rooms/newroom")}}>+ New Room</Button>
           <Button>Number Room
             <svg style={{ marginLeft: '10px', }} xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
