@@ -4,15 +4,21 @@ import dataRooms from '../../JSON/rooms.json';
 
 
 export const getRooms = createAsyncThunk('rooms/fetchRooms', async () => {
-    return await dataRooms.rooms;
+    setTimeout(() => {
+        return dataRooms.rooms;
+    }, 200);
 })
 
 export const createRoom = createAsyncThunk('rooms/createRoom', async (newRoom) => {
-    return await newRoom;
+    setTimeout(() => {
+        return newRoom;
+    }, 200);
 })
 
 export const deleteRoom = createAsyncThunk('rooms/deleteRoom', async (idRoom) => {
-    return await idRoom;
+    setTimeout(() => {
+        return idRoom;
+    }, 200);
 })
 
 export const roomsSlice = createSlice({

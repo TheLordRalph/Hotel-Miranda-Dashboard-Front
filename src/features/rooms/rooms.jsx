@@ -81,17 +81,17 @@ export default function Rooms() {
   
 
 
-  useEffect(() => {
-    if (roomsSlice.rooms.length <= 0) {
-      setTimeout(() => {
-        dispatch(getRooms());
-      }, 200);
-    }
-  }, [roomsSlice, dispatch]);
+  dispatch(getRooms());
+  // useEffect(() => {
+  //   if (roomsSlice.rooms.length <= 0) {
+  //     setTimeout(() => {
+  //     }, 200);
+  //   }
+  // }, [roomsSlice, dispatch]);
 
 
-  const deleteSelectRoom = async (idRoom) => {
-    await dispatch(deleteRoom(idRoom));
+  const deleteSelectRoom = (idRoom) => {
+    dispatch(deleteRoom(idRoom));
   }
 
 
