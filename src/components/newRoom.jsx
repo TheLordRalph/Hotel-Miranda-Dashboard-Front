@@ -43,11 +43,11 @@ export default function NewRoom() {
                         <SubTitle size='14px' lineHeight='21px' margin='0 10px 15px 0'>Has offer?</SubTitle>
                         <div style={{ display: 'flex', alignItems: 'center', }}>
                             <label>Si</label>
-                            <Input margin= '0 10px 0 10px' type='radio' id='offerSi' name='offerInput' value='Si' onInput={() => {setDiscount(true)}}></Input>
+                            <Input margin= '0 10px 0 10px' type='radio' id='offerSi' name='offerInput' value='Si' onClick={() => {setDiscount(true)}}></Input>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', }}>
                             <label>No</label>
-                            <Input margin= '0 10px 0 10px' type='radio' id='offerNo' name='offerInput' value='No' checked onInput={() => {setDiscount(false)}}></Input>
+                            <Input margin= '0 10px 0 10px' type='radio' id='offerNo' name='offerInput' value='No' onChange={() => {setDiscount(false)}}></Input>
                         </div>
                     </div>
                     <div style={{ width: '30%'}}>

@@ -4,9 +4,9 @@ import dataRooms from '../../JSON/rooms.json';
 
 
 export const getRooms = createAsyncThunk('rooms/fetchRooms', async () => {
-    setTimeout(() => {
-        return dataRooms.rooms;
-    }, 200);
+    return dataRooms.rooms;
+    // setTimeout(() => {
+    // }, 200);
 })
 
 export const createRoom = createAsyncThunk('rooms/createRoom', async (newRoom) => {

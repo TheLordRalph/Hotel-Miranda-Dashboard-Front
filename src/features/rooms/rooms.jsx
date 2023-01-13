@@ -76,19 +76,18 @@ export default function Rooms() {
   const dispatch = useDispatch();
   const roomsSlice = useSelector((state) => state.roomsReducer);
   const [roomList, setRoomList] = useState(roomsSlice);
-
+  
   const [modal, setModal] = useState(false);
   
-
-
-  dispatch(getRooms());
-  // useEffect(() => {
-  //   if (roomsSlice.rooms.length <= 0) {
-  //     setTimeout(() => {
-  //     }, 200);
-  //   }
-  // }, [roomsSlice, dispatch]);
-
+  
+  
+  useEffect(() => {
+    if (roomsSlice.rooms.length <= 0) {
+      dispatch(getRooms());
+    }
+    setRoomList(roomsSlice);
+  }, [roomsSlice, dispatch]);
+  
 
   const deleteSelectRoom = (idRoom) => {
     dispatch(deleteRoom(idRoom));
@@ -182,7 +181,7 @@ export default function Rooms() {
           <Droppable droppableId="rooms">
             {(droppableProvided) => (
               <section borderRadius='0 0 20px 20px' {...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
-                {roomsSlice.rooms.map((room, index) => (
+                {roomList.rooms.map((room, index) => (
                   <Draggable key={room.idHabitacion} draggableId={room.idHabitacion} index={index}>
                     {(draggableProvided) => (
                       <Table borderRadius='0' {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => {navigate("/rooms/:" + room.idHabitacion);}}>
