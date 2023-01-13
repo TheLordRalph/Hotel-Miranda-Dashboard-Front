@@ -34,7 +34,6 @@ export const Login = () => {
     if (email === 'admin@hotelmiranda.com' && password === 'Admin1234') {
       event.currentTarget[1].setAttribute("style", 'color: #799283; border-color: #799283;');
       dispatch({type: 'login', payload: 'Admin'});
-      //localStorage.setItem("login", true);
       navigate("/dashboard");
     } else {
       event.currentTarget[1].setAttribute("style", 'color: red; border-color: red;');
