@@ -38,6 +38,8 @@ export const Login = () => {
       navigate("/dashboard");
     } else {
       event.currentTarget[1].setAttribute("style", 'color: red; border-color: red;');
+      event.currentTarget[0].value = '';
+      event.currentTarget[1].value = '';
     }
   }
 
