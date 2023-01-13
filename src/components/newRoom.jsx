@@ -1,24 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { createRoom } from '../features/rooms/roomsSlice';
 
 import { Title, SubTitle, Main, Etiqueta, PageCardDetail, Input, Button, TextArea } from './styled';
 import roomPhoto from '../resources/Imagenes/room01.jpg';
+import { typeOf } from 'react-is';
 
 
 
 export default function NewRoom() {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    //const roomsSlice = useSelector((state) => state.roomsReducer);
+    const [room, setRoom] = useState(null);
+
     const roomAmenities = ["Cocktail", "Pets", "AC", "Toiletries", "Double Bed", "LED TV", "Bathup", "Free parking", "Wifi", "Single Bed", "Tissue box", "Coffee Set", "Free breakfast", "Pool", "Jacuzzi", "Shower", "Gym", "Spa"];
 
+    const [roomNumber, setRoomNumber] = useState();
     const [typeRoom, setTypeRoom] = useState('Single Bed');
     const [discount, setDiscount] = useState(false);
+    const [price, setPrice] = useState();
+    const [offer, setOffer] = useState();
+    const [description, setDescription] = useState();
 
     const [amenities, setAmenities] = useState(roomAmenities);
     const [amenitiesSelected, setAmenitiesSelected] = useState([]);
+
+    useEffect(() => {
+        setRoom({
+            "idHabitacion": "#00000007",
+            "foto": [
+            ],
+            "numeroHabitacion": roomNumber,
+            "roomType": typeRoom,
+            "amenities": amenitiesSelected,
+            "price": price,
+            "offerPercent": offer,
+            "status": "Available"
+        });
+    }, [roomNumber, amenitiesSelected.join(), typeRoom, discount, price, offer, description]);
+
+    const handleNewRoom = () => {
+        if (room !== null) {
+            dispatch(createRoom(room));
+        }
+    }
 
     return (
         <Main style={{ display: 'flex', marginRight: '50px', }}>
@@ -33,11 +66,11 @@ export default function NewRoom() {
                     </div>
                     <div style={{ width: '100%'}}>
                         <SubTitle size='14px' lineHeight='21px' margin='0 0 15px 0'>Room Number</SubTitle>
-                        <Input size='16px' lineHeight='25px' margin='0 30px 30px 0' placeholder='Deluxe Z - 002424'></Input>
+                        <Input size='16px' lineHeight='25px' margin='0 30px 30px 0' placeholder='Deluxe Z - 002424' onChange={(e) => {setRoomNumber(e.target.value)}}></Input>
                     </div>
                     <div style={{ width: '30%', margin: '0 10px 0 0' }}>
                         <SubTitle size='14px' lineHeight='21px' margin='0 10px 15px 0'>Price</SubTitle>
-                        <Input size='16px' width='-webkit-fill-available' lineHeight='25px' placeholder='123€'></Input>
+                        <Input size='16px' width='-webkit-fill-available' lineHeight='25px' placeholder='123€' onChange={(e) => {setPrice(e.target.value)}}></Input>
                     </div>
                     <div>
                         <SubTitle size='14px' lineHeight='21px' margin='0 10px 15px 0'>Has offer?</SubTitle>
@@ -52,9 +85,9 @@ export default function NewRoom() {
                     </div>
                     <div style={{ width: '30%'}}>
                         <SubTitle size='14px' lineHeight='21px' margin='0 0 15px 0'>Offer</SubTitle>
-                        <Input size='16px' lineHeight='25px' placeholder='20%' disabled={!discount ? true : false} opacity={!discount ? '0.6' : '1'}></Input>
+                        <Input size='16px' lineHeight='25px' placeholder='20%' disabled={!discount ? true : false} opacity={!discount ? '0.6' : '1'} onChange={(e) => {setOffer(e.target.value)}}></Input>
                     </div>
-                    <TextArea rows={4} placeholder='Lorem ipsum dolor sit amet consectetur adipisicing elit ...'></TextArea>
+                    <TextArea rows={4} placeholder='Lorem ipsum dolor sit amet consectetur adipisicing elit ...' onChange={(e) => {setDescription(e.target.value)}}></TextArea>
                     <select style={{height: 'fit-content',}} name="Amenities" id="" multiple={true} onClick={(e) => {setAmenities(amenities.filter((amenitie) => amenitie !== e.target.value || e.target.value === ''));  if(e.target.value !== ''){amenitiesSelected.push(e.target.value)}}}>
                         <option value=''>Select amenities</option>
                         {amenities.map(amenitie => (
@@ -66,6 +99,8 @@ export default function NewRoom() {
                             <Etiqueta width='fit-content' margin='5px' background='#E8F2EF' padding='10px' height='fit-content' onClick={(e) => {setAmenitiesSelected(amenitiesSelected.filter((amenitie) => amenitie !== amenitieEtiqueta)); amenities.push(amenitieEtiqueta)}}><Title size='14px' lineHeight='21px' color='#135846'>{amenitieEtiqueta}</Title></Etiqueta>
                         ))}
                     </div>
+                    <Input width='40%' margin='28px 0 0 0' type='file' accept="image/gif, image/jpeg, image/png" multiple="multiple" ></Input>
+                    <Button margin='28px 0 0 auto' background='#135846' color='white' onClick={() => {handleNewRoom()}}>New Room</Button>
                 </div>
             </PageCardDetail>
             <Swiper
@@ -75,7 +110,6 @@ export default function NewRoom() {
             slidesPerView={1}
             navigation
             onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
             >
                 <SwiperSlide>
                     <img src={roomPhoto} alt="" style={{ height: '100%', }}/>

@@ -10,9 +10,9 @@ export const getRooms = createAsyncThunk('rooms/fetchRooms', async () => {
 })
 
 export const createRoom = createAsyncThunk('rooms/createRoom', async (newRoom) => {
-    setTimeout(() => {
-        return newRoom;
-    }, 200);
+    return newRoom;
+    // setTimeout(() => {
+    // }, 200);
 })
 
 export const deleteRoom = createAsyncThunk('rooms/deleteRoom', async (idRoom) => {
