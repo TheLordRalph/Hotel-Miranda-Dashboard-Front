@@ -33,7 +33,8 @@ const LogoKPIs = styled.svg`
 `;
 
 const Calendar = styled.div`
-width: 400px;
+width: 40%;
+padding: 0 50px;
 .fc {
   width: 100%;
   height: auto;
@@ -41,7 +42,7 @@ width: 400px;
   margin-right: 40px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 4px #00000005;
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
 }
 .fc td, .fc th, .fc-scrollgrid {
   border-style: none;
@@ -57,17 +58,31 @@ width: 400px;
   padding: 14px 19px;
   display: flex;
 }
+.fc .fc-toolbar-chunk {
+  display: flex;
+  font-size: 0.8vw;
+}
+.fc .fc-button-primary {
+  background: none;
+  border: none;
+}
+.fc .fc-icon {
+  color: black;
+}
 `;
 
 const ContainerReservas = styled.div`
 display: flex;
 flex-wrap: wrap;
 margin: 0 50px 40px 50px;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 4px 4px #00000005;
+border-radius: 0px 0 20px 20px;
+padding: 25px;
 `;
 
 const Reservas = styled.div`
 display: flex;
-margin: 0 50px 40px 50px;
 `;
 
 export default function Home() {
@@ -165,8 +180,9 @@ export default function Home() {
                 initialView="dayGridMonth"
                 select={handleDateClick}
                 windowResize
-                aspectRatio={1}
-                contentHeight={390}
+                aspectRatio={2}
+                updateSize
+                contentHeight={400}
                 fixedWeekCount={false}
                 selectable={true}
                 showNonCurrentDates={false}
@@ -180,11 +196,11 @@ export default function Home() {
         <ContainerReservas id='container_reservas'>
           {createCardsBookings}
           <Reservas>
-            <Photo src={user} alt="" height="100%"/>
+            <Photo src={user} alt="" height="100%" margin='0 10px 0 0'/>
             <div>
-              <Title>Doble Delux - Numero Habitacion</Title>
-              <SubTitle>Sñ. Ojete Sucio</SubTitle>
-              <SubTitle>12-03-2022 -- 18-03-2022</SubTitle>
+              <Title size='1.8vw'>Doble Delux - Numero Habitacion</Title>
+              <SubTitle size='1.4vw'>Sñ. Ojete Sucio</SubTitle>
+              <SubTitle size='1.4vw'>12-03-2022 -- 18-03-2022</SubTitle>
             </div>
           </Reservas>
 
