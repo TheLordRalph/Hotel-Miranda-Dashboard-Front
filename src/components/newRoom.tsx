@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +10,6 @@ import { createRoom } from '../features/rooms/roomsSlice';
 
 import { Title, SubTitle, Main, Etiqueta, PageCardDetail, Input, Button, TextArea } from './styled';
 import roomPhoto from '../resources/Imagenes/room01.jpg';
-import { typeOf } from 'react-is';
 
 
 
@@ -26,9 +25,9 @@ export default function NewRoom() {
     const [roomNumber, setRoomNumber] = useState();
     const [typeRoom, setTypeRoom] = useState('Single Bed');
     const [discount, setDiscount] = useState(false);
-    const [price, setPrice] = useState();
-    const [offer, setOffer] = useState();
-    const [description, setDescription] = useState();
+    const [price, setPrice] = useState(0);
+    const [offer, setOffer] = useState(0);
+    const [description, setDescription] = useState("");
 
     const [amenities, setAmenities] = useState(roomAmenities);
     const [amenitiesSelected, setAmenitiesSelected] = useState([]);
@@ -88,7 +87,7 @@ export default function NewRoom() {
                         <Input size='16px' lineHeight='25px' placeholder='20%' disabled={!discount ? true : false} opacity={!discount ? '0.6' : '1'} onChange={(e) => {setOffer(e.target.value)}}></Input>
                     </div>
                     <TextArea rows={4} placeholder='Lorem ipsum dolor sit amet consectetur adipisicing elit ...' onChange={(e) => {setDescription(e.target.value)}}></TextArea>
-                    <select style={{height: 'fit-content',}} name="Amenities" id="" multiple={true} onClick={(e) => {setAmenities(amenities.filter((amenitie) => amenitie !== e.target.value || e.target.value === ''));  if(e.target.value !== ''){amenitiesSelected.push(e.target.value)}}}>
+                    <select style={{height: 'fit-content',}} name="Amenities" id="" multiple={true} onClick={(e: any) => {setAmenities(amenities.filter((amenitie) => amenitie !== e.currentTarget.value || e.currentTarget.value === ''));  if(e.currentTarget.value !== ''){amenitiesSelected.push(e.currentTarget.value)}}}>
                         <option value=''>Select amenities</option>
                         {amenities.map(amenitie => (
                             <option value={amenitie}>{amenitie}</option>

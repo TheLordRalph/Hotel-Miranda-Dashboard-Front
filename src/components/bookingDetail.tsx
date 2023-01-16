@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { Title, SubTitle, Main, Etiqueta, PageCardDetail } from '../components/styled';
+import { Title, SubTitle, Main, Etiqueta, PageCardDetail } from './styled';
 import roomPhoto from '../resources/Imagenes/room01.jpg';
 
 

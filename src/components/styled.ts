@@ -1,11 +1,37 @@
 import styled from 'styled-components';
 
+interface TitleProps {
+  weight?: string;
+  size?: string;
+  lineHeight?: string;
+  color?: string;
+  width?: string;
+  margin?: string;
+  textTransform?: string;
+  textAlign?: string;
+  transform?: string;
+  position?: string;
+  zIndex?: string;
+  height?: string;
+  opacity?: string;
+  fontSize?: string;
+  padding?: string;
+  border?: string;
+  background?: string;
+  borderColor?: string;
+  borderRadius?: string;
+  row?: string;
+  column?: string;
+  display?: string;
+  alignItems?: string;
+}
+
 export const Main = styled.main`
   padding-left: 18%;
   transition: padding 2s;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h1<TitleProps>`
   font-weight: ${props => props.weight ? props.weight : 'bolder'};
   font-size: ${props => props.size ? props.size : '28px'};
   line-height: ${props => props.lineHeight ? props.lineHeight : '42px'};
@@ -20,7 +46,7 @@ export const Title = styled.h1`
   z-index: ${props => props.zIndex ? props.zIndex : 'auto'};
 `;
 
-export const SubTitle = styled.h2`
+export const SubTitle = styled.h2<TitleProps>`
   font-weight: ${props => props.weight ? props.weight : 'normal'};
   font-size: ${props => props.size ? props.size : '18px'};
   line-height: ${props => props.lineHeight ? props.lineHeight : '27px'};
@@ -52,7 +78,7 @@ export const Input = styled.input.attrs(props => ({
   }
 `;
 
-export const TextArea = styled.textarea`
+export const TextArea = styled.textarea<TitleProps>`
   width: ${props => props.width ? props.width : '100%'};
   height: ${props => props.height ? props.height : 'auto'};
   padding: 14px 12px;
@@ -68,7 +94,7 @@ export const TextArea = styled.textarea`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<TitleProps>`
   font-weight: 500;
   font-size: ${props => props.fontSize ? props.fontSize : "16px"};
   width: ${props => props.width ? props.width : "auto"};
@@ -83,14 +109,14 @@ export const Button = styled.button`
   border-color: ${props => props.borderColor ? props.borderColor : "#135846"};
 `;
 
-export const Photo = styled.img`
+export const Photo = styled.img<TitleProps>`
   width: ${props => props.width ? props.width : '80px'}; 
   border-radius: 8px; 
   margin: ${props => props.margin ? props.margin : '0'};
   height: ${props => props.height ? props.height : '0'};
 `;
 
-export const Etiqueta = styled.div`
+export const Etiqueta = styled.div<TitleProps>`
   width: ${props => props.width ? props.width : '125px'}; 
   height: ${props => props.height ? props.height : 'auto'};
   margin: ${props => props.margin ? props.margin : '0'};
@@ -115,7 +141,7 @@ export const Etiqueta = styled.div`
   padding: ${props => props.padding ? props.padding : "0"};
 `;
 
-export const Table = styled.section`
+export const Table = styled.section<TitleProps>`
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 4px #00000005;
   border-radius: ${props => props.borderRadius ? props.borderRadius : '0'};
@@ -126,7 +152,7 @@ export const Table = styled.section`
   grid-row-gap: 40px;
 `;
 
-export const Column = styled.div`
+export const Column = styled.div<TitleProps>`
   width: ${props => props.width ? props.width : 'auto'}; 
   border: ${props => props.border ? props.border : 'none'};
   grid-row: ${props => props.row ? props.row : 'none'};
