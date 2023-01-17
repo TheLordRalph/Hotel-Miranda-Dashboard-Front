@@ -59,7 +59,7 @@ class Histogram extends Component {
         const x = d3.scaleBand()
             .domain(escale)
             .range([0, width])
-            .padding([0.2])
+            .padding(0.2)
         svg.append("g")
             .attr("transform", `translate(0, ${height})`)
             .call(d3.axisBottom(x).tickSize(0));
@@ -82,7 +82,7 @@ class Histogram extends Component {
         const xSubgroup = d3.scaleBand()
             .domain(typeData)
             .range([0, x.bandwidth()])
-            .padding([0.2]);
+            .padding(0.2);
 
         // color palette = one color per subgroup
         const color = d3.scaleOrdinal()

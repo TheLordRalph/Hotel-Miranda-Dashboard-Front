@@ -10,13 +10,14 @@ import CardMessage from '../../components/cardMessage';
 import NewRoom from '../../components/newRoom';
 import Header from '../../layout/header';
 
-import { getRooms, deleteRoom } from './roomsSlice';
+import { getRooms, deleteRoom, Room } from './roomsSlice';
 
 import dataRooms from '../../JSON/rooms.json';
 import photo from '../../resources/Imagenes/room01.jpg'
-import user from '../../resources/Imagenes/user.jpeg';
 import { render } from 'react-dom';
 import { useRef } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+
 
 
 const values = [
@@ -67,15 +68,15 @@ const Options = styled.div`
   }
 `;
 
-export const isModalActive = React.createContext();
+export const isModalActive = React.createContext(null);
 
 export default function Rooms() {
 
   let navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const roomsSlice = useSelector((state) => state.roomsReducer);
-  const [roomList, setRoomList] = useState(roomsSlice);
+  const dispatch = useAppDispatch();
+  const roomsSlice = useAppSelector((state) => state.roomsReducer);
+  const [roomList, setRoomList] = useState<Room[]>(roomsSlice.rooms);
   
   const [modal, setModal] = useState(false);
   
@@ -85,11 +86,11 @@ export default function Rooms() {
     if (roomsSlice.rooms.length <= 0) {
       dispatch(getRooms());
     }
-    setRoomList(roomsSlice);
+    setRoomList(roomsSlice.rooms);
   }, [roomsSlice, dispatch]);
   
 
-  const deleteSelectRoom = (idRoom) => {
+  const deleteSelectRoom = (idRoom:string) => {
     dispatch(deleteRoom(idRoom));
   }
 
@@ -144,11 +145,11 @@ export default function Rooms() {
         <div style={{ margin: '0 50px 28px 50px', textAlign: 'end', }}>
           <Button color='#FFFFFF' background='#135846' padding='15px 59px' margin='0 20px 0 0' onClick={() => {navigate("/rooms/newroom")}}>+ New Room</Button>
           <Button>Number Room
-            <svg style={{ marginLeft: '10px', }} xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <svg style={{ marginLeft: '10px', }} xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
             </svg>
           </Button>
-          <select id='order' onChange={null}>
+          <select id='order'>
             <option value={JSON.stringify(values[0])}>price 🠕</option>
             <option value={JSON.stringify(values[1])}>price 🠗</option>
           </select>
@@ -176,12 +177,12 @@ export default function Rooms() {
             return;
           }
 
-          dispatch(/*setOrderRoom({source: source.index, destination: destination.index})*/);
+          //dispatch();
         }}>
           <Droppable droppableId="rooms">
             {(droppableProvided) => (
-              <section borderRadius='0 0 20px 20px' {...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
-                {roomList.rooms.map((room, index) => (
+              <section style={{ borderRadius: '0 0 20px 20px'}} {...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
+                {roomList.map((room, index) => (
                   <Draggable key={room.idHabitacion} draggableId={room.idHabitacion} index={index}>
                     {(draggableProvided) => (
                       <Table borderRadius='0' {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => {navigate("/rooms/:" + room.idHabitacion);}}>
@@ -203,7 +204,7 @@ export default function Rooms() {
                           <SubTitle weight='normal' size='14px' lineHeight='21px' color='#799283' margin='0 0 0 8px'>/night</SubTitle>
                         </Column>
                         <Column row='1' column='5' margin='46px 0 0 0' display='flex' alignItems='center' width='90px'>
-                          <Title weight='bolder' size='16px' lineHeight='25px' color='#393939' width='fit-content'>${room.offerPrice}</Title>
+                          <Title weight='bolder' size='16px' lineHeight='25px' color='#393939' width='fit-content'>${room.offerPercent}</Title>
                           <SubTitle weight='normal' size='14px' lineHeight='21px' color='#799283' margin='0 0 0 8px'>/night</SubTitle>
                         </Column>
                         <Column row='1' column='6' margin='46px 0 0 0' width='125px'>
@@ -212,8 +213,8 @@ export default function Rooms() {
                           </Etiqueta>
                         </Column>
                         <Column row='1' column='8' width='10px'>
-                          <ButtonOption padding='0' background='none' color='black' border='none'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                          <ButtonOption>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                               <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                             </svg>
                             <Options >
