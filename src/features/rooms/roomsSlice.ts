@@ -1,18 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import dataRooms from '../../JSON/rooms.json';
 import type { RootState } from '../../app/store'
+import { Room } from "../../types";
 
-
-export interface Room {
-    idHabitacion: string
-    foto: string[]
-    numeroHabitacion: string
-    roomType: string
-    amenities: string
-    price: number
-    offerPercent: number
-    status: string
-}
 
 export interface CounterState {
     rooms: Room[]

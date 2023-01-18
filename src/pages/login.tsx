@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ export const Login = () => {
   const { dispatch } = React.useContext(LoginContext)
 
 
-  function handleSubmit(event) {
+  function handleSubmit(event: any) {
     event.preventDefault();
 
     let formData = new FormData(event.currentTarget);
@@ -51,7 +51,7 @@ export const Login = () => {
               <Input type='email' placeholder="Email" name="email" size="2em" />
               <Input type='password' placeholder="Password" name="pass" size="2em" />
               <SubTitle>Email: admin@hotelmiranda.com<br/>Password: Admin1234</SubTitle>
-              <Button primary>Login</Button>
+              <Button>Login</Button>
             </form>
           </div>
           <img src={logo} style={{ width: '50%', height: 'fit-content', margin: 'auto', padding: '41px 49px',}}/>

@@ -10,10 +10,11 @@ import CardMessage from '../../components/cardMessage';
 import NewRoom from '../../components/newRoom';
 import Header from '../../layout/header';
 
-import { getRooms, deleteRoom, Room } from './roomsSlice';
+import { getRooms, deleteRoom } from './roomsSlice';
+import { Room } from '../../types';
 
 import dataRooms from '../../JSON/rooms.json';
-import photo from '../../resources/Imagenes/room01.jpg'
+import photo from '../../resources/Imagenes/room01.jpg';
 import { render } from 'react-dom';
 import { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';

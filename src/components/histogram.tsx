@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import styled from 'styled-components';
+import { ScaleBand } from "d3";
 
 import dataReservation from '../JSON/reservation.json';
 
@@ -79,13 +80,13 @@ class Histogram extends Component {
             .call(d3.axisRight(y2).ticks(5).tickFormat(function(d) { return d + "%"; }).tickSize(width));
 
         // Another scale for subgroup position?
-        const xSubgroup = d3.scaleBand()
+        const xSubgroup = d3.scaleBand<string>()
             .domain(typeData)
             .range([0, x.bandwidth()])
             .padding(0.2);
 
         // color palette = one color per subgroup
-        const color = d3.scaleOrdinal()
+        const color = d3.scaleOrdinal<string>()
             .domain(typeData)
             .range(['#135846', '#E23428']);
 
@@ -104,7 +105,7 @@ class Histogram extends Component {
             .attr("fill", (d, i) => color(type))
             .on('mouseover', (e, d) => {
                 d3.select(this).transition()
-                        .duration('50')
+                        .duration(50)
                         .attr('opacity', '.85');
                 div.transition()
                         .duration(50)
@@ -115,10 +116,10 @@ class Histogram extends Component {
             })
             .on('mouseout', function (e, d) {
                 d3.select(this).transition()
-                        .duration('50')
+                        .duration(50)
                         .attr('opacity', '1');
                 div.transition()
-                        .duration('50')
+                        .duration(50)
                         .style("opacity", 0);
             })
         ));

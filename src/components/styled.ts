@@ -1,30 +1,6 @@
 import styled from 'styled-components';
+import { TitleProps } from '../types';
 
-interface TitleProps {
-  weight?: string;
-  size?: string;
-  lineHeight?: string;
-  color?: string;
-  width?: string;
-  margin?: string;
-  textTransform?: string;
-  textAlign?: string;
-  transform?: string;
-  position?: string;
-  zIndex?: string;
-  height?: string;
-  opacity?: string;
-  fontSize?: string;
-  padding?: string;
-  border?: string;
-  background?: string;
-  borderColor?: string;
-  borderRadius?: string;
-  row?: string;
-  column?: string;
-  display?: string;
-  alignItems?: string;
-}
 
 export const Main = styled.main`
   padding-left: 18%;
