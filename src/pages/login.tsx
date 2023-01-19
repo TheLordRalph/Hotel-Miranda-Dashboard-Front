@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 import { Title, Button, Input } from '../components/styled';
-import { LoginContext } from '../App';
+import { authContext } from '../App';
 
 import logo from '../resources/Imagenes/logo.png';
 
@@ -21,7 +21,7 @@ const SubTitle = styled.p`
 export const Login = () => {
 
   let navigate = useNavigate();
-  const { dispatch } = React.useContext(LoginContext)
+  const { dispatch } = React.useContext(authContext)
 
 
   function handleSubmit(event: any) {

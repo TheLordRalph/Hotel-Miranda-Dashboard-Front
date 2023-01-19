@@ -12,15 +12,30 @@ import Contact from './features/contacts/contact';
 import BookingDetail from './components/bookingDetail';
 import RoomDetail from './components/roomDetail';
 import NewRoom from './components/newRoom';
+import { LoginContextType } from './types';
 
+
+interface State {
+  isAuthenticated: boolean
+  user: string
+  email: string
+};
+
+interface CountAction {
+  type: string;
+  payload: {
+    user: string
+    email: string
+  };
+}
 
 const initialState = {
   isAuthenticated: false,
-  user: null,
-  email: null,
+  user: "",
+  email: "",
 };
 
-const reducerLogin = (state, action) => {
+const reducerAuth = (state: State, action: CountAction) => {
   switch (action.type) {
     case "login":
       return {
@@ -33,8 +48,8 @@ const reducerLogin = (state, action) => {
       return {
         ...state,
         isAuthenticated: false,
-        user: null,
-        email: null
+        user: "",
+        email: ""
       };
     case "updateUser":
       return {
@@ -45,14 +60,14 @@ const reducerLogin = (state, action) => {
   }
 }
 
-export const LoginContext = React.createContext();
+export const authContext = React.createContext<LoginContextType | null>(null);
 
 function App() {
-  const [state, dispatch] = React.useReducer(reducerLogin, initialState);
+  const [state, dispatch] = React.useReducer(reducerAuth, initialState);
 
   return (
     <BrowserRouter>
-      <LoginContext.Provider value={{state, dispatch}}>
+      <authContext.Provider value={{state, dispatch}}>
         {state.isAuthenticated ? <Header /> : <></>}
         <Routes>
           <Route path='/' element={<Login />}></Route>
@@ -67,9 +82,10 @@ function App() {
             <Route path='/contact' element={<Contact />}></Route>
           </Route>
         </Routes>
-      </LoginContext.Provider>
+      </authContext.Provider>
     </BrowserRouter>
   );
 }
 
 export default App;
+initialState

@@ -5,6 +5,15 @@ declare global {
   const d3: typeof _d3;
 }
 
+export type LoginContextType = {
+  state: {
+    isAuthenticated: boolean
+    user: string
+    email: string
+  }
+  dispatch: Dispatch
+};
+
 export interface Room {
   idHabitacion: string
   foto: string[]

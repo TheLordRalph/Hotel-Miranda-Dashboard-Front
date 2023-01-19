@@ -17,7 +17,7 @@
     "skipLibCheck": true 
   },
   "include": [
-    "src/**/*.ts",
+    "src/**/*.ts", "src/index.tsx", "src/App.tsx", "src/test/button.test.tsx",
   ],
   "exclude": [
       "node_modules",
