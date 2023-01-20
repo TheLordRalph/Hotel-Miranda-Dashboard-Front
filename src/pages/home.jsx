@@ -9,13 +9,12 @@ import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
 import { Title, SubTitle, Photo, Main } from '../components/styled';
 import CardMessage from '../components/cardMessage';
 import Header from '../layout/header';
-import Histogram from '../components/histogram.js';
+import Histogram from '../components/histogram.jsx';
 
 import dataBookings from '../JSON/booking.json';
 import dataMessages from '../JSON/contactMessage.json';
 import user from '../resources/Imagenes/user.jpeg';
 
-import { SelectionInfo, TitleProps } from '../types';
 
 const Card = styled.div`
   padding: 30px;
@@ -28,7 +27,7 @@ const Card = styled.div`
   margin: 0 19px;
 `;
 
-const LogoKPIs = styled.svg<TitleProps>`
+const LogoKPIs = styled.svg`
   padding: 20.5px;
   background-color: ${props => props.background ? props.background : '#FFEDEC'};
   border-radius: 8px;
