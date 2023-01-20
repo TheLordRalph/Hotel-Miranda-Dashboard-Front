@@ -91,7 +91,7 @@ export default function Home() {
 
   const [bookings, setBookings] = useState(dataBookings);
 
-  const handleDateClick = (selectionInfo) => { 
+  const handleDateClick = (selectionInfo:SelectionInfo) => { 
 
     console.log(selectionInfo);
     createCardsBookings(selectionInfo.startStr, selectionInfo.endStr);
@@ -175,7 +175,7 @@ export default function Home() {
               <FullCalendar
                 headerToolbar={{
                   start: '',
-                  end: 'prev title next'
+                  end: 'prev title next',
                 }}
                 firstDay={1}
                 plugins={[ dayGridPlugin, interactionPlugin ]}

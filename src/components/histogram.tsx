@@ -80,7 +80,7 @@ class Histogram extends Component {
             .call(d3.axisRight(y2).ticks(5).tickFormat(function(d) { return d + "%"; }).tickSize(width));
 
         // Another scale for subgroup position?
-        const xSubgroup = d3.scaleBand<string>()
+        const xSubgroup:any = d3.scaleBand<string>()
             .domain(typeData)
             .range([0, x.bandwidth()])
             .padding(0.2);

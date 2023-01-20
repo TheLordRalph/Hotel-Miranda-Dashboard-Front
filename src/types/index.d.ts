@@ -1,17 +1,36 @@
 declare module '*.jpg';
 declare module '*.jpeg';
 
+declare module 'src/resources/*.jpg' {
+  const value: any;
+  export = value;
+}
+
 declare global {
   const d3: typeof _d3;
 }
 
-export type LoginContextType = {
+export interface CountAction {
+  type: string;
+  payload: {
+    user: string
+    email: string
+  };
+}
+
+export interface State {
+  isAuthenticated: boolean
+  user: string
+  email: string
+};
+
+export interface LoginContextType {
   state: {
     isAuthenticated: boolean
     user: string
     email: string
   }
-  dispatch: Dispatch
+  dispatch: (CountAction) => void
 };
 
 export interface Room {

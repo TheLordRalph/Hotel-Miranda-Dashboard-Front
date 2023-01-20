@@ -12,22 +12,8 @@ import Contact from './features/contacts/contact';
 import BookingDetail from './components/bookingDetail';
 import RoomDetail from './components/roomDetail';
 import NewRoom from './components/newRoom';
-import { LoginContextType } from './types';
+import { LoginContextType, State, CountAction } from './types';
 
-
-interface State {
-  isAuthenticated: boolean
-  user: string
-  email: string
-};
-
-interface CountAction {
-  type: string;
-  payload: {
-    user: string
-    email: string
-  };
-}
 
 const initialState = {
   isAuthenticated: false,
@@ -35,7 +21,7 @@ const initialState = {
   email: "",
 };
 
-const reducerAuth = (state: State, action: CountAction) => {
+const reducerAuth = (state: State, action: CountAction):State => {
   switch (action.type) {
     case "login":
       return {
@@ -51,16 +37,16 @@ const reducerAuth = (state: State, action: CountAction) => {
         user: "",
         email: ""
       };
-    case "updateUser":
-      return {
+    // case "updateUser":
+    //   return {
         
-      };
+    //   };
     default:
       return state;
   }
 }
 
-export const authContext = React.createContext<LoginContextType | null>(null);
+export const authContext = React.createContext<LoginContextType>({state:initialState, dispatch:() => {}});
 
 function App() {
   const [state, dispatch] = React.useReducer(reducerAuth, initialState);
