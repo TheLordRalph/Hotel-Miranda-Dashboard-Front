@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-import { LoginContext } from "../App";
+import { authContext } from "../App";
 
 
 export const useAuth = () => {
-    const { state } = React.useContext(LoginContext);
+    const { state } = React.useContext(authContext);
     if (state.isAuthenticated) {
         return state.isAuthenticated;
     }

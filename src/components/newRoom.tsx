@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +10,6 @@ import { createRoom } from '../features/rooms/roomsSlice';
 
 import { Title, SubTitle, Main, Etiqueta, PageCardDetail, Input, Button, TextArea } from './styled';
 import roomPhoto from '../resources/Imagenes/room01.jpg';
-import { typeOf } from 'react-is';
 
 
 
@@ -18,20 +17,19 @@ export default function NewRoom() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    //const roomsSlice = useSelector((state) => state.roomsReducer);
-    const [room, setRoom] = useState(null);
+    const [room, setRoom] = useState(Object);
 
     const roomAmenities = ["Cocktail", "Pets", "AC", "Toiletries", "Double Bed", "LED TV", "Bathup", "Free parking", "Wifi", "Single Bed", "Tissue box", "Coffee Set", "Free breakfast", "Pool", "Jacuzzi", "Shower", "Gym", "Spa"];
 
     const [roomNumber, setRoomNumber] = useState();
     const [typeRoom, setTypeRoom] = useState('Single Bed');
     const [discount, setDiscount] = useState(false);
-    const [price, setPrice] = useState();
-    const [offer, setOffer] = useState();
-    const [description, setDescription] = useState();
+    const [price, setPrice] = useState(0);
+    const [offer, setOffer] = useState(0);
+    const [description, setDescription] = useState("");
 
     const [amenities, setAmenities] = useState(roomAmenities);
-    const [amenitiesSelected, setAmenitiesSelected] = useState([]);
+    const [amenitiesSelected, setAmenitiesSelected] = useState([""]);
 
     useEffect(() => {
         setRoom({
@@ -66,11 +64,11 @@ export default function NewRoom() {
                     </div>
                     <div style={{ width: '100%'}}>
                         <SubTitle size='14px' lineHeight='21px' margin='0 0 15px 0'>Room Number</SubTitle>
-                        <Input size='16px' lineHeight='25px' margin='0 30px 30px 0' placeholder='Deluxe Z - 002424' onChange={(e) => {setRoomNumber(e.target.value)}}></Input>
+                        <Input size='16px' lineHeight='25px' margin='0 30px 30px 0' placeholder='Deluxe Z - 002424' onChange={(e: any) => {setRoomNumber(e.target.value)}}></Input>
                     </div>
                     <div style={{ width: '30%', margin: '0 10px 0 0' }}>
                         <SubTitle size='14px' lineHeight='21px' margin='0 10px 15px 0'>Price</SubTitle>
-                        <Input size='16px' width='-webkit-fill-available' lineHeight='25px' placeholder='123€' onChange={(e) => {setPrice(e.target.value)}}></Input>
+                        <Input size='16px' width='-webkit-fill-available' lineHeight='25px' placeholder='123€' onChange={(e: any) => {setPrice(e.target.value)}}></Input>
                     </div>
                     <div>
                         <SubTitle size='14px' lineHeight='21px' margin='0 10px 15px 0'>Has offer?</SubTitle>
@@ -85,10 +83,10 @@ export default function NewRoom() {
                     </div>
                     <div style={{ width: '30%'}}>
                         <SubTitle size='14px' lineHeight='21px' margin='0 0 15px 0'>Offer</SubTitle>
-                        <Input size='16px' lineHeight='25px' placeholder='20%' disabled={!discount ? true : false} opacity={!discount ? '0.6' : '1'} onChange={(e) => {setOffer(e.target.value)}}></Input>
+                        <Input size='16px' lineHeight='25px' placeholder='20%' disabled={!discount ? true : false} opacity={!discount ? '0.6' : '1'} onChange={(e: any) => {setOffer(e.target.value)}}></Input>
                     </div>
                     <TextArea rows={4} placeholder='Lorem ipsum dolor sit amet consectetur adipisicing elit ...' onChange={(e) => {setDescription(e.target.value)}}></TextArea>
-                    <select style={{height: 'fit-content',}} name="Amenities" id="" multiple={true} onClick={(e) => {setAmenities(amenities.filter((amenitie) => amenitie !== e.target.value || e.target.value === ''));  if(e.target.value !== ''){amenitiesSelected.push(e.target.value)}}}>
+                    <select style={{height: 'fit-content',}} name="Amenities" id="" multiple={true} onClick={(e) => {setAmenities(amenities.filter((amenitie) => amenitie !== e.currentTarget.value || e.currentTarget.value === ''));  if(e.currentTarget.value !== ''){amenitiesSelected.push(e.currentTarget.value)}}}>
                         <option value=''>Select amenities</option>
                         {amenities.map(amenitie => (
                             <option value={amenitie}>{amenitie}</option>

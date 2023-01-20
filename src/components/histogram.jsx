@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import styled from 'styled-components';
+import { ScaleBand } from "d3";
 
 import dataReservation from '../JSON/reservation.json';
 
@@ -59,7 +60,7 @@ class Histogram extends Component {
         const x = d3.scaleBand()
             .domain(escale)
             .range([0, width])
-            .padding([0.2])
+            .padding(0.2)
         svg.append("g")
             .attr("transform", `translate(0, ${height})`)
             .call(d3.axisBottom(x).tickSize(0));
@@ -82,7 +83,7 @@ class Histogram extends Component {
         const xSubgroup = d3.scaleBand()
             .domain(typeData)
             .range([0, x.bandwidth()])
-            .padding([0.2]);
+            .padding(0.2);
 
         // color palette = one color per subgroup
         const color = d3.scaleOrdinal()
@@ -104,7 +105,7 @@ class Histogram extends Component {
             .attr("fill", (d, i) => color(type))
             .on('mouseover', (e, d) => {
                 d3.select(this).transition()
-                        .duration('50')
+                        .duration(50)
                         .attr('opacity', '.85');
                 div.transition()
                         .duration(50)
@@ -115,10 +116,10 @@ class Histogram extends Component {
             })
             .on('mouseout', function (e, d) {
                 d3.select(this).transition()
-                        .duration('50')
+                        .duration(50)
                         .attr('opacity', '1');
                 div.transition()
-                        .duration('50')
+                        .duration(50)
                         .style("opacity", 0);
             })
         ));

@@ -6,7 +6,6 @@ import CardMessage from '../../components/cardMessage';
 
 import dataMessages from '../../JSON/contactMessage.json';
 
-import user from '../../resources/Imagenes/user.jpeg';
 
 export default function Contact() {
   return (
@@ -23,7 +22,7 @@ export default function Contact() {
         <NavLink to={`/bookings/${'pending'}`}><Title weight='normal' size='16px' lineHeight='25px' color='#393939'>Archive</Title></NavLink>
 
         <Button margin='0 0 0 auto'>Newest
-          <svg style={{ marginLeft: '10px', }} xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+          <svg style={{ marginLeft: '10px', }} xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
           </svg>
         </Button>

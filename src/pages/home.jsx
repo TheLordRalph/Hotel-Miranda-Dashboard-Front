@@ -9,11 +9,13 @@ import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
 import { Title, SubTitle, Photo, Main } from '../components/styled';
 import CardMessage from '../components/cardMessage';
 import Header from '../layout/header';
-import Histogram from '../components/histogram.jsx';
+import Histogram from '../components/histogram.js';
 
 import dataBookings from '../JSON/booking.json';
 import dataMessages from '../JSON/contactMessage.json';
 import user from '../resources/Imagenes/user.jpeg';
+
+import { SelectionInfo, TitleProps } from '../types';
 
 const Card = styled.div`
   padding: 30px;
@@ -26,9 +28,9 @@ const Card = styled.div`
   margin: 0 19px;
 `;
 
-const LogoKPIs = styled.svg`
+const LogoKPIs = styled.svg<TitleProps>`
   padding: 20.5px;
-  background-color: ${props => props.backgroundColor ? props.backgroundColor : '#FFEDEC'};
+  background-color: ${props => props.background ? props.background : '#FFEDEC'};
   border-radius: 8px;
 `;
 
@@ -136,7 +138,7 @@ export default function Home() {
           </Card>
 
           <Card>
-            <LogoKPIs backgroundColor='#E23428' width="24px" height="24px" fill='#FFFFFF' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <LogoKPIs background='#E23428' width="24px" height="24px" fill='#FFFFFF' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.498 18l-3.705-3.704 1.415-1.415 2.294 2.295 5.293-5.293 1.415 1.415L10.498 18zM21 6v13c0 1.104-.896 2-2 2H5c-1.104 0-2-.896-2-2V6c0-1.104.896-2 2-2h1V2h2v2h8V2h2v2h1c1.104 0 2 .896 2 2zm-2 2H5v11h14V8z" />
             </LogoKPIs>
             <div>
@@ -173,7 +175,7 @@ export default function Home() {
               <FullCalendar
                 headerToolbar={{
                   start: '',
-                  end: 'prev title next'
+                  end: 'prev title next',
                 }}
                 firstDay={1}
                 plugins={[ dayGridPlugin, interactionPlugin ]}
@@ -194,7 +196,7 @@ export default function Home() {
         </section>
 
         <ContainerReservas id='container_reservas'>
-          {createCardsBookings}
+          {/*createCardsBookings*/}
           <Reservas>
             <Photo src={user} alt="" height="100%" margin='0 10px 0 0'/>
             <div>

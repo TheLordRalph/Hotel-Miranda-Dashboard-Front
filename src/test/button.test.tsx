@@ -3,7 +3,8 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Button } from '../components/styled';
 
-test("a", () => {
+
+test("Test componente Button", () => {
     const color = '#000000';
     render(
       <Button background={color}>

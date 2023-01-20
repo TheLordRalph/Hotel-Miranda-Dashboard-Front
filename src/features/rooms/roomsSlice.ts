@@ -1,6 +1,19 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import dataRooms from '../../JSON/rooms.json';
+import type { RootState } from '../../app/store'
+import { Room } from "../../types";
 
+
+export interface CounterState {
+    rooms: Room[]
+    status: string
+}
+  
+// Define the initial state using that type
+const initialState: CounterState = {
+    rooms: [],
+    status: "loading"
+}
 
 
 export const getRooms = createAsyncThunk('rooms/fetchRooms', async () => {
@@ -9,13 +22,13 @@ export const getRooms = createAsyncThunk('rooms/fetchRooms', async () => {
     // }, 200);
 })
 
-export const createRoom = createAsyncThunk('rooms/createRoom', async (newRoom) => {
+export const createRoom = createAsyncThunk('rooms/createRoom', async (newRoom: Room) => {
     return newRoom;
     // setTimeout(() => {
     // }, 200);
 })
 
-export const deleteRoom = createAsyncThunk('rooms/deleteRoom', async (idRoom) => {
+export const deleteRoom = createAsyncThunk('rooms/deleteRoom', async (idRoom: string) => {
     setTimeout(() => {
         return idRoom;
     }, 200);
@@ -23,10 +36,7 @@ export const deleteRoom = createAsyncThunk('rooms/deleteRoom', async (idRoom) =>
 
 export const roomsSlice = createSlice({
     name: 'rooms',
-    initialState: {
-        rooms: [],
-        status: "loading"
-    },
+    initialState: initialState,
     reducers: {
         // setOrderRoom: (state, action) => { 
         //     const selectRoom = state[action.payload.source];
@@ -39,7 +49,7 @@ export const roomsSlice = createSlice({
             .addCase(getRooms.pending, (state, action) => {
                 state.status = 'loading';
             })
-            .addCase(getRooms.fulfilled, (state, action) => {
+            .addCase(getRooms.fulfilled, (state, action: PayloadAction<Room[]>) => {
                 state.status = 'succeeded';
                 state.rooms = action.payload;
             })
@@ -48,14 +58,14 @@ export const roomsSlice = createSlice({
                 console.error('Error to fetch data rooms');
             });
         builder
-            .addCase(createRoom.fulfilled, (state, action) => {
+            .addCase(createRoom.fulfilled, (state, action: PayloadAction<Room>) => {
                 state.status = 'succeeded';
                 state.rooms.push(action.payload);
             })
         builder
             .addCase(deleteRoom.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.rooms = state.rooms.filter((room) => room.idHabitacion !== action.payload);
+                state.rooms = state.rooms.filter((room: any) => room.idHabitacion !== action.payload);
             })
     }
 });
