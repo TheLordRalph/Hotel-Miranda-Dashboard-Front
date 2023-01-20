@@ -91,8 +91,18 @@ export default function Rooms() {
   }, [roomsSlice, dispatch]);
   
 
-  const deleteSelectRoom = (idRoom:string) => {
+  const handleDeleteRoom = (idRoom:string) => {
     dispatch(deleteRoom(idRoom));
+  }
+
+  const handleEditeRoom = (idRoom:string) => {
+    
+  }
+
+  const handleViewRoom = (e:any, idRoom:string) => {
+    if (e.target.innerHTML !== "Eliminar") {
+      navigate("/rooms/:" + idRoom);
+    }
   }
 
 
@@ -186,7 +196,7 @@ export default function Rooms() {
                 {roomList.map((room, index) => (
                   <Draggable key={room.idHabitacion} draggableId={room.idHabitacion} index={index}>
                     {(draggableProvided) => (
-                      <Table borderRadius='0' {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => {navigate("/rooms/:" + room.idHabitacion);}}>
+                      <Table borderRadius='0' {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={(e:any) => {handleViewRoom(e, room.idHabitacion)}}>
                         <Column row='1' column='1' display='flex' alignItems='center' width='265px'>
                           <Photo src={photo} width='150px' margin='0 28px 0 0' height='77px' />
                           <div>
@@ -219,7 +229,7 @@ export default function Rooms() {
                               <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                             </svg>
                             <Options >
-                              <option onClick={() => {deleteSelectRoom(room.idHabitacion)}} value="">Eliminar</option>
+                              <option onClick={() => {handleDeleteRoom(room.idHabitacion)}} value="">Eliminar</option>
                               <option value="">Editar</option>
                             </Options>
                           </ButtonOption>

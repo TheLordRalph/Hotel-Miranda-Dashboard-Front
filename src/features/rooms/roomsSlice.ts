@@ -29,9 +29,15 @@ export const createRoom = createAsyncThunk('rooms/createRoom', async (newRoom: R
 })
 
 export const deleteRoom = createAsyncThunk('rooms/deleteRoom', async (idRoom: string) => {
-    setTimeout(() => {
-        return idRoom;
-    }, 200);
+    return idRoom;
+    // setTimeout(() => {
+    // }, 200);
+})
+
+export const editRoom = createAsyncThunk('rooms/editRoom', async (editRoom: Room) => {
+    return editRoom;
+    // setTimeout(() => {
+    // }, 200);
 })
 
 export const roomsSlice = createSlice({
@@ -65,7 +71,14 @@ export const roomsSlice = createSlice({
         builder
             .addCase(deleteRoom.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.rooms = state.rooms.filter((room: any) => room.idHabitacion !== action.payload);
+                state.rooms = state.rooms.filter((room: Room) => room.idHabitacion !== action.payload);
+            })
+        builder
+            .addCase(editRoom.fulfilled, (state, action: PayloadAction<Room>) => {
+                state.status = 'succeeded';
+                state.rooms = state.rooms.map((room) => {
+                    return room.idHabitacion === action.payload.idHabitacion ? action.payload : room;
+                });
             })
     }
 });
