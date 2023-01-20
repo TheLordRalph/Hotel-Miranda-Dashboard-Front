@@ -4,7 +4,18 @@ import styled from 'styled-components';
 import { ScaleBand } from "d3";
 
 import dataReservation from '../JSON/reservation.json';
+import { Title } from "./styled";
 
+
+const Container = styled.div`
+    padding: 30px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 4px #00000005;
+    border-radius: 20px;
+    .domain {
+        stroke: none !important;
+    }
+`;
 
 
 const LeyendBar = styled.div`
@@ -42,7 +53,7 @@ class Histogram extends Component {
         const svg = d3.select('#my_dataviz')
             .append("svg")
                 .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
+                .attr("height", 'auto')
             .append("g")
                 .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -62,7 +73,7 @@ class Histogram extends Component {
             .range([0, width])
             .padding(0.2)
         svg.append("g")
-            .attr("transform", `translate(0, ${height})`)
+            .attr("transform", `translate(0, ${height+20})`)
             .call(d3.axisBottom(x).tickSize(0));
 
         // Add Y axis
@@ -127,7 +138,10 @@ class Histogram extends Component {
     }
 
     render(){
-        return <div id='my_dataviz'><LeyendBar id="leyendBar"/></div>
+        return <Container id='my_dataviz'>
+            <LeyendBar id="leyendBar"/>
+            <Title size='20px' lineHeight='30px' margin='0 0 32px 0'>Reservation Stats</Title>
+            </Container>
     }
 
 }

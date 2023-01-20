@@ -43,7 +43,7 @@ padding: 0 50px;
   margin-right: 40px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 4px #00000005;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px;
 }
 .fc td, .fc th, .fc-scrollgrid {
   border-style: none;
@@ -75,7 +75,7 @@ padding: 0 50px;
 const ContainerReservas = styled.div`
 display: flex;
 flex-wrap: wrap;
-margin: 0 50px 40px 50px;
+margin: 30px 50px 40px 50px;
 background: #FFFFFF 0% 0% no-repeat padding-box;
 box-shadow: 0px 4px 4px #00000005;
 border-radius: 0px 0 20px 20px;
