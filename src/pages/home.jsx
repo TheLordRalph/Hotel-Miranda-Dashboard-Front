@@ -91,7 +91,7 @@ export default function Home() {
 
   const [bookings, setBookings] = useState(dataBookings);
 
-  const handleDateClick = (selectionInfo:SelectionInfo) => { 
+  const handleDateClick = (selectionInfo) => { 
 
     console.log(selectionInfo);
     createCardsBookings(selectionInfo.startStr, selectionInfo.endStr);
@@ -102,7 +102,7 @@ export default function Home() {
     }
   }
 
-  const createCardsBookings = (dateStart: string, dateEnd: string) => {
+  const createCardsBookings = (dateStart, dateEnd) => {
     dataBookings.bookings.map(booking => (
       null
     ))
