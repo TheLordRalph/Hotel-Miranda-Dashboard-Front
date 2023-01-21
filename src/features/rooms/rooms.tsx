@@ -96,11 +96,11 @@ export default function Rooms() {
   }
 
   const handleEditeRoom = (idRoom:string) => {
-    
+    navigate("/rooms/edit/:" + idRoom);
   }
 
   const handleViewRoom = (e:any, idRoom:string) => {
-    if (e.target.innerHTML !== "Eliminar") {
+    if (e.target.innerHTML !== "Eliminar" && e.target.innerHTML !== "Editar") {
       navigate("/rooms/:" + idRoom);
     }
   }
@@ -230,7 +230,7 @@ export default function Rooms() {
                             </svg>
                             <Options >
                               <option onClick={() => {handleDeleteRoom(room.idHabitacion)}} value="">Eliminar</option>
-                              <option value="">Editar</option>
+                              <option onClick={() => {handleEditeRoom(room.idHabitacion)}} value="">Editar</option>
                             </Options>
                           </ButtonOption>
                         </Column>

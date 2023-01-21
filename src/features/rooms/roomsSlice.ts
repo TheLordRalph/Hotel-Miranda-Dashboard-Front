@@ -22,6 +22,12 @@ export const getRooms = createAsyncThunk('rooms/fetchRooms', async () => {
     // }, 200);
 })
 
+export const getSelectRoom = createAsyncThunk('rooms/getSelectRoom', async (idRoom: string) => {
+    return idRoom;
+    // setTimeout(() => {
+    // }, 200);
+})
+
 export const createRoom = createAsyncThunk('rooms/createRoom', async (newRoom: Room) => {
     return newRoom;
     // setTimeout(() => {
@@ -62,6 +68,11 @@ export const roomsSlice = createSlice({
             .addCase(getRooms.rejected, (state, action) => {
                 state.status = 'failed';
                 console.error('Error to fetch data rooms');
+            });
+        builder
+            .addCase(getSelectRoom.fulfilled, (state, action: PayloadAction<string>) => {
+                state.status = 'succeeded';
+                state.rooms = state.rooms.filter((room: Room) => room.idHabitacion === action.payload);
             });
         builder
             .addCase(createRoom.fulfilled, (state, action: PayloadAction<Room>) => {
