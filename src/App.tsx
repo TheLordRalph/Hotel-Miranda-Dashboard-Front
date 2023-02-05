@@ -57,7 +57,7 @@ function App() {
       <authContext.Provider value={{state, dispatch}}>
         {state.isAuthenticated ? <Header /> : <></>}
         <Routes>
-          <Route path='/' element={<Login />}></Route>
+          <Route path='/Hotel-Miranda-Dashboard-Front/' element={<Login />}></Route>
           <Route element={<ProtectedRoutes />}>
             <Route path='/dashboard' element={<Home />}></Route>
             <Route path='/booking' element={<Booking />}></Route>
